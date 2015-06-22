@@ -8,7 +8,7 @@ namespace Manisero.AutoRegistrar.Queries
 		public Type Type { get; set; }
 	}
 
-	public interface IDependenciesQuery : IQuery<DependenciesQueryParameter, IEnumerable<Type>>
+	public interface IDependenciesQuery : IQuery<DependenciesQueryParameter, IReadOnlyList<Type>>
 	{
 	}
 }
