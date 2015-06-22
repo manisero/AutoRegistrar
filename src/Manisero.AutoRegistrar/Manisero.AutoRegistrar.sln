@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manisero.AutoRegistrar.Quer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manisero.AutoRegistrar.Commands.Tests", "Manisero.AutoRegistrar.Commands.Tests\Manisero.AutoRegistrar.Commands.Tests.csproj", "{0B70B23A-BEFC-432A-933E-47A11F3610D5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Core", "1. Core", "{562669DD-9E63-42E8-BC92-2EC132508B2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Commands", "3. Commands", "{CC005B8D-7885-44C1-845E-3440B06D989B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Queries", "2. Queries", "{8E70BBE3-3F20-4BC3-8962-DF1EA22A042F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,5 +52,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3EFEF475-F94E-4D29-9579-EBB7F6628548} = {562669DD-9E63-42E8-BC92-2EC132508B2B}
+		{0986D366-E0AE-4F21-A752-5F7DAA3289D7} = {562669DD-9E63-42E8-BC92-2EC132508B2B}
+		{C7A240B7-A78F-4401-8AFC-6ADDD35932CC} = {CC005B8D-7885-44C1-845E-3440B06D989B}
+		{0B70B23A-BEFC-432A-933E-47A11F3610D5} = {CC005B8D-7885-44C1-845E-3440B06D989B}
+		{F97B4444-48D2-4C63-A999-1903E5405CDD} = {8E70BBE3-3F20-4BC3-8962-DF1EA22A042F}
+		{8223E104-2B81-4F77-993E-2B264CEF25AC} = {8E70BBE3-3F20-4BC3-8962-DF1EA22A042F}
 	EndGlobalSection
 EndGlobal
