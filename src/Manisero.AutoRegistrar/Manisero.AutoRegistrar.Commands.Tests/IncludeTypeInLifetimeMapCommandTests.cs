@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Manisero.AutoRegistrar.Tests.Commands
+namespace Manisero.AutoRegistrar.Commands.Tests
 {
 	public class IncludeTypeInLifetimeMapCommandTests
 	{
