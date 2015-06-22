@@ -25,6 +25,26 @@ namespace Manisero.AutoRegistrar.Tests.Queries
 		}
 
 		[Test]
+		public void default_constructor___no_dependencies()
+		{
+			// Arrange & Act
+			var result = Execute(typeof(DefaultConstructor));
+
+			// Assert
+			result.Should().HaveCount(0);
+		}
+
+		[Test]
+		public void single_constructor_no_dependencies___no_dependencies()
+		{
+			// Arrange & Act
+			var result = Execute(typeof(SingleConstructor_NoDependencies));
+
+			// Assert
+			result.Should().HaveCount(0);
+		}
+
+		[Test]
 		public void single_constructor_one_dependency___dependency_from_the_only_constructor()
 		{
 			// Arrange & Act
