@@ -103,5 +103,26 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 			lifetimeMap.Should().Contain(typeof(DefaultConstructor), longestLifetime);
 			lifetimeMap.Should().Contain(typeof(SingleConstructor_DefaultConstructor), longestLifetime);
 		}
+
+		[Test]
+		public void tree_partially_present_in_map___include_missig_and_copy_lowest_lifetime()
+		{
+			// Arrange & Act
+			var lifetimeMap = new Dictionary<Type, int>
+				{
+					{ typeof(int), 3 }
+				};
+
+			Execute(lifetimeMap, typeof(SingleConstructor_IntDefaultConstructorSingleConstructorInt));
+
+			// Assert
+			lifetimeMap.Should().HaveCount(4);
+
+			var longestLifetime = _longestIntLifetimeQuery.Execute(Void.Value);
+			lifetimeMap.Should().Contain(typeof(int), 3);
+			lifetimeMap.Should().Contain(typeof(DefaultConstructor), longestLifetime);
+			lifetimeMap.Should().Contain(typeof(SingleConstructor_Int), 3);
+			lifetimeMap.Should().Contain(typeof(SingleConstructor_IntDefaultConstructorSingleConstructorInt), 3);
+		}
 	}
 }

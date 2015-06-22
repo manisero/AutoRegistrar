@@ -61,6 +61,8 @@
     <Compile Include="TestsHelpers\MutlipleConstructors_Int.cs" />
     <Compile Include="TestsHelpers\DefaultConstructor.cs" />
     <Compile Include="TestsHelpers\SingleConstructor_DefaultConstructor.cs" />
+    <Compile Include="TestsHelpers\SingleConstructor_IntDefaultConstructor.cs" />
+    <Compile Include="TestsHelpers\SingleConstructor_IntDefaultConstructorSingleConstructorInt.cs" />
     <Compile Include="TestsHelpers\SingleConstructor_IntStringBool.cs" />
     <Compile Include="TestsHelpers\SingleConstructor_NoDependencies.cs" />
     <Compile Include="TestsHelpers\SingleConstructor_Int.cs" />
