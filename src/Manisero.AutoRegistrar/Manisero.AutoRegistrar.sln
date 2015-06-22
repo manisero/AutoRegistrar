@@ -1,7 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manisero.AutoRegistrar", "Manisero.AutoRegistrar\Manisero.AutoRegistrar.csproj", "{3EFEF475-F94E-4D29-9579-EBB7F6628548}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manisero.AutoRegistrar.Tests", "Manisero.AutoRegistrar.Tests\Manisero.AutoRegistrar.Tests.csproj", "{0986D366-E0AE-4F21-A752-5F7DAA3289D7}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EFEF475-F94E-4D29-9579-EBB7F6628548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EFEF475-F94E-4D29-9579-EBB7F6628548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EFEF475-F94E-4D29-9579-EBB7F6628548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EFEF475-F94E-4D29-9579-EBB7F6628548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0986D366-E0AE-4F21-A752-5F7DAA3289D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0986D366-E0AE-4F21-A752-5F7DAA3289D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0986D366-E0AE-4F21-A752-5F7DAA3289D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0986D366-E0AE-4F21-A752-5F7DAA3289D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
