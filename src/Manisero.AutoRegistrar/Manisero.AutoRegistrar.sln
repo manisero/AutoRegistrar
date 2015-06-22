@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manisero.AutoRegistrar", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manisero.AutoRegistrar.Tests", "Manisero.AutoRegistrar.Tests\Manisero.AutoRegistrar.Tests.csproj", "{0986D366-E0AE-4F21-A752-5F7DAA3289D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manisero.AutoRegistrar.Commands", "Manisero.AutoRegistrar.Commands\Manisero.AutoRegistrar.Commands.csproj", "{C7A240B7-A78F-4401-8AFC-6ADDD35932CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{0986D366-E0AE-4F21-A752-5F7DAA3289D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0986D366-E0AE-4F21-A752-5F7DAA3289D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0986D366-E0AE-4F21-A752-5F7DAA3289D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7A240B7-A78F-4401-8AFC-6ADDD35932CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7A240B7-A78F-4401-8AFC-6ADDD35932CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7A240B7-A78F-4401-8AFC-6ADDD35932CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7A240B7-A78F-4401-8AFC-6ADDD35932CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
