@@ -79,7 +79,7 @@ namespace Manisero.AutoRegistrar.Queries.Tests
 		}
 
 		[Test]
-		public void mutliple_constructors_same_number_of_parameters___NotSupportedException()
+		public void mutliple_constructors_same_number_of_parameters___exception()
 		{
 			// Arrange
 			Action act = (() => Execute(typeof(MutlipleConstructors_SameNumberOfParameters)));

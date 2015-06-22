@@ -28,6 +28,21 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 		}
 
 		[Test]
+		public void type_already_in_map___InvalidOperationException()
+		{
+			// Arrange & Act
+			var lifetimeMap = new Dictionary<Type, int>
+				{
+					{ typeof(DefaultConstructor), 0 }
+				};
+
+			Action act = () => Execute(lifetimeMap, typeof(DefaultConstructor));
+
+			// Assert
+			act.ShouldThrow<InvalidOperationException>();
+		}
+
+		[Test]
 		public void no_dependencies___longest_lifetime()
 		{
 			// Arrange & Act

@@ -1,6 +1,8 @@
+using System;
 using Manisero.AutoRegistrar.Queries;
 using Manisero.AutoRegistrar.Queries.LongestLifetime;
 using System.Linq;
+using Manisero.AutoRegistrar.Extensions;
 
 namespace Manisero.AutoRegistrar.Commands._Impl
 {
@@ -17,6 +19,11 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 
 		public Void Execute(IncludeTypeInLifetimeMapCommandParameter<TLifetime> parameter)
 		{
+			if (parameter.LifetimeMap.ContainsKey(parameter.Type))
+			{
+				throw new InvalidOperationException("Lifetime Map already contains {0} type".FormatWith(parameter.Type));
+			}
+
 			var dependencies = _typeDependenciesQuery.Execute(new TypeDependenciesQueryParameter
 				{
 					Type = parameter.Type
