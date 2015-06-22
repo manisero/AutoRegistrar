@@ -47,7 +47,7 @@ namespace Manisero.AutoRegistrar.Queries.Tests
 		public void single_constructor_one_dependency___dependency_from_the_only_constructor()
 		{
 			// Arrange & Act
-			var result = Execute(typeof(SingleConstructor_SingleDependency));
+			var result = Execute(typeof(SingleConstructor_Int));
 
 			// Assert
 			result.Should().HaveCount(1);
@@ -58,7 +58,7 @@ namespace Manisero.AutoRegistrar.Queries.Tests
 		public void mutliple_constructors_single_dependency___dependency_from_constructor_with_parameter()
 		{
 			// Arrange & Act
-			var result = Execute(typeof(MutlipleConstructors_SingleDependency));
+			var result = Execute(typeof(MutlipleConstructors_Int));
 
 			// Assert
 			result.Should().HaveCount(1);
@@ -69,7 +69,7 @@ namespace Manisero.AutoRegistrar.Queries.Tests
 		public void mutliple_constructors_multiple_dependencies___dependency_from_constructor_with_most_parameters()
 		{
 			// Arrange & Act
-			var result = Execute(typeof(MutlipleConstructors_MultipleDependencies));
+			var result = Execute(typeof(MutlipleConstructors_IntStringBool));
 
 			// Assert
 			result.Should().HaveCount(3);

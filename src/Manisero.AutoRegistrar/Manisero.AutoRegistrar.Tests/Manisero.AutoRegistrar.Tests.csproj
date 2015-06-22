@@ -56,12 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestsHelpers\MutlipleConstructors_MultipleDependencies.cs" />
+    <Compile Include="TestsHelpers\MutlipleConstructors_IntStringBool.cs" />
     <Compile Include="TestsHelpers\MutlipleConstructors_SameNumberOfParameters.cs" />
-    <Compile Include="TestsHelpers\MutlipleConstructors_SingleDependency.cs" />
+    <Compile Include="TestsHelpers\MutlipleConstructors_Int.cs" />
     <Compile Include="TestsHelpers\DefaultConstructor.cs" />
     <Compile Include="TestsHelpers\SingleConstructor_NoDependencies.cs" />
-    <Compile Include="TestsHelpers\SingleConstructor_SingleDependency.cs" />
+    <Compile Include="TestsHelpers\SingleConstructor_Int.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
