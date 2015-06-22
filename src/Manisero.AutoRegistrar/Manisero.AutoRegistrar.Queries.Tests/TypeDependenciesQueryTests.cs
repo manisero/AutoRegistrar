@@ -7,17 +7,17 @@ using NUnit.Framework;
 
 namespace Manisero.AutoRegistrar.Queries.Tests
 {
-	public class DependenciesQueryTests
+	public class TypeDependenciesQueryTests
 	{
 		private IReadOnlyList<Type> Execute(Type type)
 		{
 			// Arrange
-			var parameter = new DependenciesQueryParameter
+			var parameter = new TypeDependenciesQueryParameter
 			{
 				Type = type
 			};
 
-			var query = new DependenciesQuery();
+			var query = new TypeDependenciesQuery();
 
 			// Act
 			return query.Execute(parameter);

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace Manisero.AutoRegistrar.Queries
 {
-	public class DependenciesQueryParameter
+	public class TypeDependenciesQueryParameter
 	{
 		public Type Type { get; set; }
 	}
 
-	public interface IDependenciesQuery : IQuery<DependenciesQueryParameter, IReadOnlyList<Type>>
+	public interface ITypeDependenciesQuery : IQuery<TypeDependenciesQueryParameter, IReadOnlyList<Type>>
 	{
 	}
 }

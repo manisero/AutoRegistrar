@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Manisero.AutoRegistrar.Queries.LogestLifetime;
+using Manisero.AutoRegistrar.Queries.LongestLifetime;
 
 namespace Manisero.AutoRegistrar.Commands._Impl
 {

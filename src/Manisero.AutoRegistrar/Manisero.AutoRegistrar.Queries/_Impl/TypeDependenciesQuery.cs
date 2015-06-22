@@ -5,9 +5,9 @@ using Manisero.AutoRegistrar.Extensions;
 
 namespace Manisero.AutoRegistrar.Queries._Impl
 {
-	public class DependenciesQuery : IDependenciesQuery
+	public class TypeDependenciesQuery : ITypeDependenciesQuery
 	{
-		public IReadOnlyList<Type> Execute(DependenciesQueryParameter parameter)
+		public IReadOnlyList<Type> Execute(TypeDependenciesQueryParameter parameter)
 		{
 			var parameterLists = parameter.Type
 										  .GetConstructors()
