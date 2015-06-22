@@ -45,6 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\IDependenciesQuery.cs" />
     <Compile Include="Commands\IIncludeTypeInLifeTimeMapCommand.cs" />
+    <Compile Include="Queries\LogestLifetime\ILongestLifetimeQuery.cs" />
+    <Compile Include="Queries\LogestLifetime\LongestLifetimeQueries\LongestIntLifetimeQuery.cs" />
+    <Compile Include="Queries\Void.cs" />
     <Compile Include="Queries\_Impl\DependenciesQuery.cs" />
     <Compile Include="Queries\IQuery.cs" />
     <Compile Include="Registrar.cs" />

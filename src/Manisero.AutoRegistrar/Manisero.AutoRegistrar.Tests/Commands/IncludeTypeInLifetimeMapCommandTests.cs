@@ -7,7 +7,7 @@ namespace Manisero.AutoRegistrar.Tests.Commands
 		[Test]
 		public void no_dependencies___longest_lifetime()
 		{
-			
+
 		}
 	}
 }
