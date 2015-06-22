@@ -1,4 +1,4 @@
-﻿namespace Manisero.AutoRegistrar.Queries
+﻿namespace Manisero.AutoRegistrar
 {
 	public class Void
 	{

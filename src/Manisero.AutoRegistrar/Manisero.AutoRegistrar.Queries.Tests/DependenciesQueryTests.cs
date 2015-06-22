@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using Manisero.AutoRegistrar.Queries;
 using Manisero.AutoRegistrar.Queries._Impl;
 using Manisero.AutoRegistrar.Tests.TestsHelpers;
 using NUnit.Framework;
 
-namespace Manisero.AutoRegistrar.Tests.Queries
+namespace Manisero.AutoRegistrar.Queries.Tests
 {
 	public class DependenciesQueryTests
 	{
