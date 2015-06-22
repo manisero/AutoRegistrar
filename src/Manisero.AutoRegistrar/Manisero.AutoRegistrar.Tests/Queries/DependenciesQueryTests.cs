@@ -3,37 +3,13 @@ using System.Collections.Generic;
 using FluentAssertions;
 using Manisero.AutoRegistrar.Queries;
 using Manisero.AutoRegistrar.Queries._Impl;
+using Manisero.AutoRegistrar.Tests.TestsHelpers;
 using NUnit.Framework;
 
 namespace Manisero.AutoRegistrar.Tests.Queries
 {
 	public class DependenciesQueryTests
 	{
-		private class SingleConstructor_SingleDependency
-		{
-			public SingleConstructor_SingleDependency(int dependency) { }
-		}
-
-		private class MutlipleConstructors_SingleDependency
-		{
-			public MutlipleConstructors_SingleDependency() { }
-			public MutlipleConstructors_SingleDependency(int dependency) { }
-		}
-
-		private class MutlipleConstructors_MultipleDependencies
-		{
-			public MutlipleConstructors_MultipleDependencies() { }
-			public MutlipleConstructors_MultipleDependencies(int dependency) { }
-			public MutlipleConstructors_MultipleDependencies(int dependency1, string dependncy2, bool dependency3) { }
-			public MutlipleConstructors_MultipleDependencies(int dependency1, string dependncy2) { }
-		}
-
-		private class MutlipleConstructors_SameNumberOfParameters
-		{
-			public MutlipleConstructors_SameNumberOfParameters(int dependency) { }
-			public MutlipleConstructors_SameNumberOfParameters(string dependency) { }
-		}
-
 		private IReadOnlyList<Type> Execute(Type type)
 		{
 			// Arrange
