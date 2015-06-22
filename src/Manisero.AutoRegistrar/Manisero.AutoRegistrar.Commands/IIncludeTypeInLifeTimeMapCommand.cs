@@ -11,6 +11,7 @@ namespace Manisero.AutoRegistrar.Commands
 	}
 
 	public interface IIncludeTypeInLifetimeMapCommand<TLifetime> : ICommand<IncludeTypeInLifetimeMapCommandParameter<TLifetime>, Void>
+		where TLifetime : IComparable
 	{
 	}
 }

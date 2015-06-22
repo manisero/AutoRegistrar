@@ -7,6 +7,7 @@ using Manisero.AutoRegistrar.Extensions;
 namespace Manisero.AutoRegistrar.Commands._Impl
 {
 	public class IncludeTypeInLifetimeMapCommand<TLifetime> : IIncludeTypeInLifetimeMapCommand<TLifetime>
+		where TLifetime : IComparable
 	{
 		private readonly ITypeDependenciesQuery _typeDependenciesQuery;
 		private readonly ILongestLifetimeQuery<TLifetime> _longestLifetimeQuery;
@@ -24,15 +25,37 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 				throw new InvalidOperationException("Lifetime Map already contains {0} type".FormatWith(parameter.Type));
 			}
 
+			var lifetime = _longestLifetimeQuery.Execute(Void.Value);
 			var dependencies = _typeDependenciesQuery.Execute(new TypeDependenciesQueryParameter
 				{
 					Type = parameter.Type
 				});
 
-			if (!dependencies.Any())
+			if (dependencies.Any())
 			{
-				parameter.LifetimeMap[parameter.Type] = _longestLifetimeQuery.Execute(Void.Value);
+				foreach (var dependency in dependencies)
+				{
+					TLifetime dependencyLifetime;
+
+					if (!parameter.LifetimeMap.TryGetValue(dependency, out dependencyLifetime))
+					{
+						Execute(new IncludeTypeInLifetimeMapCommandParameter<TLifetime>
+							{
+								LifetimeMap = parameter.LifetimeMap,
+								Type = dependency
+							});
+
+						dependencyLifetime = parameter.LifetimeMap[dependency];
+					}
+
+					if (dependencyLifetime.CompareTo(lifetime) < 0)
+					{
+						lifetime = dependencyLifetime;
+					}
+				}
 			}
+
+			parameter.LifetimeMap[parameter.Type] = lifetime;
 
 			return Void.Value;
 		}

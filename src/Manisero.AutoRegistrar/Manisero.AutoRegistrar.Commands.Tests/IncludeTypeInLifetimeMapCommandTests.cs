@@ -51,6 +51,57 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 
 			// Assert
 			lifetimeMap.Should().HaveCount(1);
+			lifetimeMap.Should().Contain(typeof(DefaultConstructor), _longestIntLifetimeQuery.Execute(Void.Value));
+		}
+
+		[Test]
+		public void single_dependency_present_in_map___copy_its_lifetime()
+		{
+			// Arrange & Act
+			var existingLifetime = 3;
+			var lifetimeMap = new Dictionary<Type, int>
+				{
+					{ typeof(int), existingLifetime }
+				};
+
+			Execute(lifetimeMap, typeof(SingleConstructor_Int));
+
+			// Assert
+			lifetimeMap.Should().HaveCount(2);
+			lifetimeMap.Should().Contain(typeof(SingleConstructor_Int), existingLifetime);
+		}
+
+		[Test]
+		public void multiple_dependencies_present_in_map___copy_lowest_lifetime()
+		{
+			// Arrange & Act
+			var lifetimeMap = new Dictionary<Type, int>
+				{
+					{ typeof(int), 7 },
+					{ typeof(string), 3 },
+					{ typeof(bool), 5 }
+				};
+
+			Execute(lifetimeMap, typeof(SingleConstructor_IntStringBool));
+
+			// Assert
+			lifetimeMap.Should().HaveCount(4);
+			lifetimeMap.Should().Contain(typeof(SingleConstructor_IntStringBool), 3);
+		}
+
+		[Test]
+		public void single_dependency_not_present_in_map___include_it_and_copy_its_lifetime()
+		{
+			// Arrange & Act
+			var lifetimeMap = new Dictionary<Type, int>();
+			Execute(lifetimeMap, typeof(SingleConstructor_DefaultConstructor));
+
+			// Assert
+			lifetimeMap.Should().HaveCount(2);
+
+			var longestLifetime = _longestIntLifetimeQuery.Execute(Void.Value);
+			lifetimeMap.Should().Contain(typeof(DefaultConstructor), longestLifetime);
+			lifetimeMap.Should().Contain(typeof(SingleConstructor_DefaultConstructor), longestLifetime);
 		}
 	}
 }

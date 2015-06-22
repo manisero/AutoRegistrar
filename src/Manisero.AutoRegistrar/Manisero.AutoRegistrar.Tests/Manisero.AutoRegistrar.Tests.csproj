@@ -60,6 +60,8 @@
     <Compile Include="TestsHelpers\MutlipleConstructors_SameNumberOfParameters.cs" />
     <Compile Include="TestsHelpers\MutlipleConstructors_Int.cs" />
     <Compile Include="TestsHelpers\DefaultConstructor.cs" />
+    <Compile Include="TestsHelpers\SingleConstructor_DefaultConstructor.cs" />
+    <Compile Include="TestsHelpers\SingleConstructor_IntStringBool.cs" />
     <Compile Include="TestsHelpers\SingleConstructor_NoDependencies.cs" />
     <Compile Include="TestsHelpers\SingleConstructor_Int.cs" />
   </ItemGroup>
