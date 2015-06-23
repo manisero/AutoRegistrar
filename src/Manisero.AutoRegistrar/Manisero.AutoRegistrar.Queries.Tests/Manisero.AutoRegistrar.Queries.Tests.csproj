@@ -63,9 +63,9 @@
       <Project>{f97b4444-48d2-4c63-a999-1903e5405cdd}</Project>
       <Name>Manisero.AutoRegistrar.Queries</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Manisero.AutoRegistrar.Tests\Manisero.AutoRegistrar.Tests.csproj">
-      <Project>{0986d366-e0ae-4f21-a752-5f7daa3289d7}</Project>
-      <Name>Manisero.AutoRegistrar.Tests</Name>
+    <ProjectReference Include="..\Manisero.AutoRegistrar.Tests.Core\Manisero.AutoRegistrar.Tests.Core.csproj">
+      <Project>{8910c4d0-6093-4157-90d6-fd5e84e37c55}</Project>
+      <Name>Manisero.AutoRegistrar.Tests.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manisero.AutoRegistrar\Manisero.AutoRegistrar.csproj">
       <Project>{3efef475-f94e-4d29-9579-ebb7f6628548}</Project>

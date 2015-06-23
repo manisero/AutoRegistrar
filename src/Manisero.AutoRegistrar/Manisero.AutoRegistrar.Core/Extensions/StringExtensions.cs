@@ -1,4 +1,4 @@
-﻿namespace Manisero.AutoRegistrar.Extensions
+﻿namespace Manisero.AutoRegistrar.Core.Extensions
 {
 	public static class StringExtensions
 	{

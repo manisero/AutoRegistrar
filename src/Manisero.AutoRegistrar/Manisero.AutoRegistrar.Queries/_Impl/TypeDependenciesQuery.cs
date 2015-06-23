@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Manisero.AutoRegistrar.Extensions;
+using Manisero.AutoRegistrar.Core.Extensions;
 
 namespace Manisero.AutoRegistrar.Queries._Impl
 {

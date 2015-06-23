@@ -48,9 +48,9 @@
     <Compile Include="_Impl\TypeDependenciesQuery.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Manisero.AutoRegistrar\Manisero.AutoRegistrar.csproj">
-      <Project>{3efef475-f94e-4d29-9579-ebb7f6628548}</Project>
-      <Name>Manisero.AutoRegistrar</Name>
+    <ProjectReference Include="..\Manisero.AutoRegistrar.Core\Manisero.AutoRegistrar.Core.csproj">
+      <Project>{a90c5768-053b-429f-aad3-60224890dda0}</Project>
+      <Name>Manisero.AutoRegistrar.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
