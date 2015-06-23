@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarTests.cs" />
     <Compile Include="Stubs\Registrar.cs" />
   </ItemGroup>
   <ItemGroup>
