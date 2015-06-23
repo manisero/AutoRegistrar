@@ -2,6 +2,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 using Ninject;
+using Ninject.Planning.Bindings;
 using Shared.InterfaceImplementation;
 
 namespace NInjectKnowledgeBase
@@ -9,7 +10,7 @@ namespace NInjectKnowledgeBase
     public class KnowledgeBase
     {
 		[Test]
-		public void default_lifetime_is_per_resolve()
+		public void default_lifetime_is_transient()
 		{
 			// Arrange
 			var kernel = new StandardKernel();
@@ -39,47 +40,20 @@ namespace NInjectKnowledgeBase
 		}
 
 		[Test]
-		public void implementation_lifetime_applies_to_interface()
+		public void implementation_lifetime_does_not_apply_to_interface()
 		{
 			// Arrange
-			throw new NotImplementedException();
+			var kernel = new StandardKernel();
+
+			kernel.Bind<IInterface>().To<Implementation>();
+			kernel.Bind<Implementation>().ToSelf().InSingletonScope();
 
 			// Act
+			var instance1 = kernel.Get<IInterface>();
+			var instance2 = kernel.Get<IInterface>();
 
 			// Assert
-		}
-
-		[Test]
-		public void implementation_lifetime_applies_to_base_type()
-		{
-			// Arrange
-			throw new NotImplementedException();
-
-			// Act
-
-			// Assert
-		}
-
-		[Test]
-		public void interface_chaining_is_not_supported()
-		{
-			// Arrange
-			throw new NotImplementedException();
-
-			// Act
-
-			// Assert
-		}
-
-		[Test]
-		public void class_chaining_is_not_supported()
-		{
-			// Arrange
-			throw new NotImplementedException();
-
-			// Act
-
-			// Assert
+			instance2.Should().NotBe(instance1);
 		}
     }
 }

@@ -12,7 +12,7 @@ namespace UnityKnowledgeBase
     public class KnowledgeBase
     {
 		[Test]
-		public void default_lifetime_is_per_resolve()
+		public void default_lifetime_is_transient()
 		{
 			// Arrange
 			var container = new UnityContainer();
