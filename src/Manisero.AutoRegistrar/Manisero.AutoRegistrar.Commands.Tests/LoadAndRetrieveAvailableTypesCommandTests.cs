@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using Manisero.AutoRegistrar.Commands._Impl;
 using NUnit.Framework;
-using System.Linq;
 
 namespace Manisero.AutoRegistrar.Commands.Tests
 {
