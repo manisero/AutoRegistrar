@@ -12,15 +12,10 @@ namespace Manisero.AutoRegistrar.Queries.Tests
 		private IReadOnlyList<Type> Execute(Type type)
 		{
 			// Arrange
-			var parameter = new TypeDependenciesQueryParameter
-			{
-				Type = type
-			};
-
 			var query = new TypeDependenciesQuery();
 
 			// Act
-			return query.Execute(parameter);
+			return query.Execute(type);
 		}
 
 		[Test]

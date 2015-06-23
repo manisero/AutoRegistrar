@@ -1,6 +1,6 @@
 ﻿namespace Manisero.AutoRegistrar.Queries.LongestLifetime
 {
-	public interface ILongestLifetimeQuery<TLifetime> : IQuery<Void, TLifetime>
+	public interface ILongestLifetimeQuery<TLifetime> : IParameterlessQuery<TLifetime>
 	{
 	}
 }

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IParameterlessQuery.cs" />
     <Compile Include="ITypeDependenciesQuery.cs" />
     <Compile Include="IQuery.cs" />
     <Compile Include="LongestLifetime\ILongestLifetimeQuery.cs" />

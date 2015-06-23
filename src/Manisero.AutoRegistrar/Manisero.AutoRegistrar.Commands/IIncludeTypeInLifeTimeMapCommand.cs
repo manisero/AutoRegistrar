@@ -10,7 +10,7 @@ namespace Manisero.AutoRegistrar.Commands
 		public Type Type { get; set; }
 	}
 
-	public interface IIncludeTypeInLifetimeMapCommand<TLifetime> : ICommand<IncludeTypeInLifetimeMapCommandParameter<TLifetime>, Void>
+	public interface IIncludeTypeInLifetimeMapCommand<TLifetime> : ICommand<IncludeTypeInLifetimeMapCommandParameter<TLifetime>>
 		where TLifetime : IComparable
 	{
 	}

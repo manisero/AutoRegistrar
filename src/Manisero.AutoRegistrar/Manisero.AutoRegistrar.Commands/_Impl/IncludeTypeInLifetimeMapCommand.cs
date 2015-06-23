@@ -18,18 +18,15 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 			_longestLifetimeQuery = longestLifetimeQuery;
 		}
 
-		public Void Execute(IncludeTypeInLifetimeMapCommandParameter<TLifetime> parameter)
+		public void Execute(IncludeTypeInLifetimeMapCommandParameter<TLifetime> parameter)
 		{
 			if (parameter.LifetimeMap.ContainsKey(parameter.Type))
 			{
 				throw new InvalidOperationException("Lifetime Map already contains {0} type".FormatWith(parameter.Type));
 			}
 
-			var lifetime = _longestLifetimeQuery.Execute(Void.Value);
-			var dependencies = _typeDependenciesQuery.Execute(new TypeDependenciesQueryParameter
-				{
-					Type = parameter.Type
-				});
+			var lifetime = _longestLifetimeQuery.Execute();
+			var dependencies = _typeDependenciesQuery.Execute(parameter.Type);
 
 			if (dependencies.Any())
 			{
@@ -56,8 +53,6 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 			}
 
 			parameter.LifetimeMap[parameter.Type] = lifetime;
-
-			return Void.Value;
 		}
 	}
 }

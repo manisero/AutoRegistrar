@@ -1,7 +1,7 @@
 ﻿namespace Manisero.AutoRegistrar.Commands
 {
-	public interface ICommand<TParameter, TResult>
+	public interface ICommand<TParameter>
 	{
-		TResult Execute(TParameter parameter);
+		void Execute(TParameter parameter);
 	}
 }

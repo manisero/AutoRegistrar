@@ -13,6 +13,12 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 	{
 		private readonly TypeDependenciesQuery _typeDependenciesQuery = new TypeDependenciesQuery();
 		private readonly LongestIntLifetimeQuery _longestIntLifetimeQuery = new LongestIntLifetimeQuery();
+		private readonly int _longestLifetime;
+
+		public IncludeTypeInLifetimeMapCommandTests()
+		{
+			_longestLifetime = _longestIntLifetimeQuery.Execute();
+		}
 
 		private void Execute(Dictionary<Type, int> lifetimeMap, Type type)
 		{
@@ -51,7 +57,7 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 
 			// Assert
 			lifetimeMap.Should().HaveCount(1);
-			lifetimeMap.Should().Contain(typeof(DefaultConstructor), _longestIntLifetimeQuery.Execute(Void.Value));
+			lifetimeMap.Should().Contain(typeof(DefaultConstructor), _longestLifetime);
 		}
 
 		[Test]
@@ -98,10 +104,8 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 
 			// Assert
 			lifetimeMap.Should().HaveCount(2);
-
-			var longestLifetime = _longestIntLifetimeQuery.Execute(Void.Value);
-			lifetimeMap.Should().Contain(typeof(DefaultConstructor), longestLifetime);
-			lifetimeMap.Should().Contain(typeof(SingleConstructor_DefaultConstructor), longestLifetime);
+			lifetimeMap.Should().Contain(typeof(DefaultConstructor), _longestLifetime);
+			lifetimeMap.Should().Contain(typeof(SingleConstructor_DefaultConstructor), _longestLifetime);
 		}
 
 		[Test]
@@ -117,10 +121,8 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 
 			// Assert
 			lifetimeMap.Should().HaveCount(4);
-
-			var longestLifetime = _longestIntLifetimeQuery.Execute(Void.Value);
 			lifetimeMap.Should().Contain(typeof(int), 3);
-			lifetimeMap.Should().Contain(typeof(DefaultConstructor), longestLifetime);
+			lifetimeMap.Should().Contain(typeof(DefaultConstructor), _longestLifetime);
 			lifetimeMap.Should().Contain(typeof(SingleConstructor_Int), 3);
 			lifetimeMap.Should().Contain(typeof(SingleConstructor_IntDefaultConstructorSingleConstructorInt), 3);
 		}
