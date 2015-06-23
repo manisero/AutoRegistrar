@@ -66,6 +66,10 @@
       <Project>{c7a240b7-a78f-4401-8afc-6addd35932cc}</Project>
       <Name>Manisero.AutoRegistrar.Commands</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Manisero.AutoRegistrar.Queries.Tests\Manisero.AutoRegistrar.Queries.Tests.csproj">
+      <Project>{8223e104-2b81-4f77-993e-2b264cef25ac}</Project>
+      <Name>Manisero.AutoRegistrar.Queries.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manisero.AutoRegistrar.Queries\Manisero.AutoRegistrar.Queries.csproj">
       <Project>{f97b4444-48d2-4c63-a999-1903e5405cdd}</Project>
       <Name>Manisero.AutoRegistrar.Queries</Name>
@@ -73,10 +77,6 @@
     <ProjectReference Include="..\Manisero.AutoRegistrar.Tests.Core\Manisero.AutoRegistrar.Tests.Core.csproj">
       <Project>{8910c4d0-6093-4157-90d6-fd5e84e37c55}</Project>
       <Name>Manisero.AutoRegistrar.Tests.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Manisero.AutoRegistrar\Manisero.AutoRegistrar.csproj">
-      <Project>{3efef475-f94e-4d29-9579-ebb7f6628548}</Project>
-      <Name>Manisero.AutoRegistrar</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

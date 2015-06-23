@@ -7,15 +7,18 @@ using System.Linq;
 namespace Manisero.AutoRegistrar.Commands._Impl
 {
 	public class IncludeTypeInLifetimeMapCommand<TLifetime> : IIncludeTypeInLifetimeMapCommand<TLifetime>
-		where TLifetime : IComparable
 	{
 		private readonly ITypeDependenciesQuery _typeDependenciesQuery;
 		private readonly ILongestLifetimeQuery<TLifetime> _longestLifetimeQuery;
+		private readonly IIsLifetimeShorterThanQuery<TLifetime> _isLifetimeShorterThanQuery;
 
-		public IncludeTypeInLifetimeMapCommand(ITypeDependenciesQuery typeDependenciesQuery, ILongestLifetimeQuery<TLifetime> longestLifetimeQuery)
+		public IncludeTypeInLifetimeMapCommand(ITypeDependenciesQuery typeDependenciesQuery,
+											   ILongestLifetimeQuery<TLifetime> longestLifetimeQuery,
+											   IIsLifetimeShorterThanQuery<TLifetime> isLifetimeShorterThanQuery)
 		{
 			_typeDependenciesQuery = typeDependenciesQuery;
 			_longestLifetimeQuery = longestLifetimeQuery;
+			_isLifetimeShorterThanQuery = isLifetimeShorterThanQuery;
 		}
 
 		public void Execute(IncludeTypeInLifetimeMapCommandParameter<TLifetime> parameter)
@@ -45,7 +48,11 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 						dependencyLifetime = parameter.LifetimeMap[dependency];
 					}
 
-					if (dependencyLifetime.CompareTo(lifetime) < 0)
+					if (_isLifetimeShorterThanQuery.Execute(new IsLifetimeShorterThanQueryParameter<TLifetime>
+						{
+							Lifetime = dependencyLifetime,
+							OtherLifetime = lifetime
+						}))
 					{
 						lifetime = dependencyLifetime;
 					}

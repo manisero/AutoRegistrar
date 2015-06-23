@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Manisero.AutoRegistrar.Commands._Impl;
 using Manisero.AutoRegistrar.Queries.LongestLifetime.LongestLifetimeQueries;
+using Manisero.AutoRegistrar.Queries.Tests.Stubs;
 using Manisero.AutoRegistrar.Queries._Impl;
 using Manisero.AutoRegistrar.Tests.Core.TestsHelpers;
 using NUnit.Framework;
@@ -13,6 +14,7 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 	{
 		private readonly TypeDependenciesQuery _typeDependenciesQuery = new TypeDependenciesQuery();
 		private readonly LongestIntLifetimeQuery _longestIntLifetimeQuery = new LongestIntLifetimeQuery();
+		private readonly IsIntLifetimeShorterThanQuery _isIntLifetimeShorterThanQuery = new IsIntLifetimeShorterThanQuery();
 		private readonly int _longestLifetime;
 
 		public IncludeTypeInLifetimeMapCommandTests()
@@ -23,7 +25,9 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 		private void Execute(Dictionary<Type, int> lifetimeMap, Type type)
 		{
 			// Arrange
-			var command = new IncludeTypeInLifetimeMapCommand<int>(_typeDependenciesQuery, _longestIntLifetimeQuery);
+			var command = new IncludeTypeInLifetimeMapCommand<int>(_typeDependenciesQuery,
+																   _longestIntLifetimeQuery,
+																   _isIntLifetimeShorterThanQuery);
 
 			// Act
 			command.Execute(new IncludeTypeInLifetimeMapCommandParameter<int>

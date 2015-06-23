@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Stubs\IsIntLifetimeShorterThanQuery.cs" />
     <Compile Include="TypeDependenciesQueryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,10 +67,6 @@
     <ProjectReference Include="..\Manisero.AutoRegistrar.Tests.Core\Manisero.AutoRegistrar.Tests.Core.csproj">
       <Project>{8910c4d0-6093-4157-90d6-fd5e84e37c55}</Project>
       <Name>Manisero.AutoRegistrar.Tests.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Manisero.AutoRegistrar\Manisero.AutoRegistrar.csproj">
-      <Project>{3efef475-f94e-4d29-9579-ebb7f6628548}</Project>
-      <Name>Manisero.AutoRegistrar</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
