@@ -16,7 +16,7 @@ namespace Manisero.AutoRegistrar.Queries.Tests
 			var result = query.Execute();
 
 			// Assert
-			result.Should().Contain(null, typeof(LoadedTypesQuery));
+			result.Should().Contain(typeof(LoadedTypesQueryTests));
 		}
 	}
 }

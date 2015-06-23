@@ -14,10 +14,8 @@ namespace Manisero.AutoRegistrar.Queries._Impl
 
 			IncludeAssembly(entryAssembly, knownAssemblies);
 
-			var knownTypes = knownAssemblies.SelectMany(x => x.ExportedTypes)
-											.ToList();
-
-			return knownTypes;
+			return knownAssemblies.SelectMany(x => x.ExportedTypes)
+								  .ToList();
 		}
 
 		private void IncludeAssembly(Assembly assembly, HashSet<Assembly> knownAssemblies)
@@ -31,9 +29,14 @@ namespace Manisero.AutoRegistrar.Queries._Impl
 
 			foreach (var referencedAssemblyName in assembly.GetReferencedAssemblies())
 			{
-				var referencedAssembly = Assembly.Load(referencedAssemblyName);
-
-				IncludeAssembly(referencedAssembly, knownAssemblies);
+				try
+				{
+					var referencedAssembly = Assembly.ReflectionOnlyLoad(referencedAssemblyName.FullName);
+					IncludeAssembly(referencedAssembly, knownAssemblies);
+				}
+				catch (Exception)
+				{
+				}
 			}
 		}
 	}
