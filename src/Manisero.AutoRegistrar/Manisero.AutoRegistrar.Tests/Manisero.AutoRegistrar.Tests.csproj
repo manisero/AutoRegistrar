@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3EFEF475-F94E-4D29-9579-EBB7F6628548}</ProjectGuid>
+    <ProjectGuid>{F1C132D7-0E4E-4DC4-AF05-B03E3125D013}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Manisero.AutoRegistrar</RootNamespace>
-    <AssemblyName>Manisero.AutoRegistrar</AssemblyName>
+    <RootNamespace>Manisero.AutoRegistrar.Tests</RootNamespace>
+    <AssemblyName>Manisero.AutoRegistrar.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions, Version=3.4.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.3.4.0\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=3.4.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.3.4.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture, Version=3.30.8.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.30.8\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,15 +56,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stubs\Registrar.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Manisero.AutoRegistrar.Commands\Manisero.AutoRegistrar.Commands.csproj">
       <Project>{c7a240b7-a78f-4401-8afc-6addd35932cc}</Project>
       <Name>Manisero.AutoRegistrar.Commands</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Manisero.AutoRegistrar.Queries.Tests\Manisero.AutoRegistrar.Queries.Tests.csproj">
+      <Project>{8223e104-2b81-4f77-993e-2b264cef25ac}</Project>
+      <Name>Manisero.AutoRegistrar.Queries.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manisero.AutoRegistrar.Queries\Manisero.AutoRegistrar.Queries.csproj">
       <Project>{f97b4444-48d2-4c63-a999-1903e5405cdd}</Project>
       <Name>Manisero.AutoRegistrar.Queries</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manisero.AutoRegistrar.Tests.Core\Manisero.AutoRegistrar.Tests.Core.csproj">
+      <Project>{8910c4d0-6093-4157-90d6-fd5e84e37c55}</Project>
+      <Name>Manisero.AutoRegistrar.Tests.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
