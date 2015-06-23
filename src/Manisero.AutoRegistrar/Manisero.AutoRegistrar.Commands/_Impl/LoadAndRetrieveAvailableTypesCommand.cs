@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
-namespace Manisero.AutoRegistrar.Queries._Impl
+namespace Manisero.AutoRegistrar.Commands._Impl
 {
-	public class AvailableTypesQuery : IAvailableTypesQuery
+	public class LoadAndRetrieveAvailableTypesCommand : ILoadAndRetrieveAvailableTypesCommand
 	{
-		public IEnumerable<Type> Execute(AvailableTypesQueryParameter parameter)
+		public IEnumerable<Type> Execute(LoadAndRetrieveAvailableTypesCommandParameter parameter)
 		{
 			var availableAssemblies = new HashSet<Assembly>();
 			IncludeAssembly(parameter.RootAssembly, parameter.ReferencedAssemblyFilter, availableAssemblies);

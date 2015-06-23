@@ -40,13 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IIsLifetimeShorterThanQuery.cs" />
-    <Compile Include="IAvailableTypesQuery.cs" />
     <Compile Include="IParameterlessQuery.cs" />
     <Compile Include="ITypeDependenciesQuery.cs" />
     <Compile Include="IQuery.cs" />
     <Compile Include="ILongestLifetimeQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_Impl\AvailableTypesQuery.cs" />
     <Compile Include="_Impl\TypeDependenciesQuery.cs" />
   </ItemGroup>
   <ItemGroup>
