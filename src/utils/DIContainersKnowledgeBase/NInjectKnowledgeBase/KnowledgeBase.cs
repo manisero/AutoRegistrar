@@ -1,8 +1,6 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 using Ninject;
-using Ninject.Planning.Bindings;
 using Shared.InterfaceImplementation;
 
 namespace NInjectKnowledgeBase
