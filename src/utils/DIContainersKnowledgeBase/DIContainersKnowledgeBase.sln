@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NInjectKnowledgeBase", "NInjectKnowledgeBase\NInjectKnowledgeBase.csproj", "{49C407DB-FBF7-4D1E-BB77-5E29805FA567}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NInjectKnowledgeBase", "NInjectKnowledgeBase\NInjectKnowledgeBase.csproj", "{6882307A-C770-4160-BA06-5DC1F063B68E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{49C407DB-FBF7-4D1E-BB77-5E29805FA567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49C407DB-FBF7-4D1E-BB77-5E29805FA567}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49C407DB-FBF7-4D1E-BB77-5E29805FA567}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49C407DB-FBF7-4D1E-BB77-5E29805FA567}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6882307A-C770-4160-BA06-5DC1F063B68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6882307A-C770-4160-BA06-5DC1F063B68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6882307A-C770-4160-BA06-5DC1F063B68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6882307A-C770-4160-BA06-5DC1F063B68E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
