@@ -1,7 +1,6 @@
 using System;
 using Manisero.AutoRegistrar.Core.Extensions;
 using Manisero.AutoRegistrar.Queries;
-using Manisero.AutoRegistrar.Queries.LongestLifetime;
 using System.Linq;
 
 namespace Manisero.AutoRegistrar.Commands._Impl

@@ -43,8 +43,7 @@
     <Compile Include="IParameterlessQuery.cs" />
     <Compile Include="ITypeDependenciesQuery.cs" />
     <Compile Include="IQuery.cs" />
-    <Compile Include="LongestLifetime\ILongestLifetimeQuery.cs" />
-    <Compile Include="LongestLifetime\LongestLifetimeQueries\LongestIntLifetimeQuery.cs" />
+    <Compile Include="ILongestLifetimeQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Impl\TypeDependenciesQuery.cs" />
   </ItemGroup>

@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Stubs\IsIntLifetimeShorterThanQuery.cs" />
+    <Compile Include="Stubs\LongestIntLifetimeQuery.cs" />
     <Compile Include="TypeDependenciesQueryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

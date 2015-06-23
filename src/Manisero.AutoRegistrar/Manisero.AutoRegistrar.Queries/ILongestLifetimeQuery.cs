@@ -1,4 +1,4 @@
-﻿namespace Manisero.AutoRegistrar.Queries.LongestLifetime
+﻿namespace Manisero.AutoRegistrar.Queries
 {
 	public interface ILongestLifetimeQuery<TLifetime> : IParameterlessQuery<TLifetime>
 	{
