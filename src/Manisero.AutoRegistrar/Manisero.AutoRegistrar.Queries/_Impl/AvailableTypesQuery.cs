@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Manisero.AutoRegistrar.Queries._Impl
 {
-	public class LoadedTypesQuery : ILoadedTypesQuery
+	public class AvailableTypesQuery : IAvailableTypesQuery
 	{
 		public IEnumerable<Type> Execute()
 		{

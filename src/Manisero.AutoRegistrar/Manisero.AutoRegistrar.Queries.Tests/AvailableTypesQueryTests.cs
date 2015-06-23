@@ -4,19 +4,19 @@ using NUnit.Framework;
 
 namespace Manisero.AutoRegistrar.Queries.Tests
 {
-	public class LoadedTypesQueryTests
+	public class AvailableTypesQueryTests
 	{
 		[Test]
 		public void returns_some_known_types()
 		{
 			// Arrange
-			var query = new LoadedTypesQuery();
+			var query = new AvailableTypesQuery();
 
 			// Act
 			var result = query.Execute();
 
 			// Assert
-			result.Should().Contain(typeof(LoadedTypesQueryTests));
+			result.Should().Contain(typeof(AvailableTypesQueryTests));
 		}
 	}
 }
