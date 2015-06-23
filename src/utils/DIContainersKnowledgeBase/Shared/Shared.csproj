@@ -42,11 +42,11 @@
     <Compile Include="ClassInheritance\Child.cs" />
     <Compile Include="ClassInheritance\Parent.cs" />
     <Compile Include="ImplementationChain\ChildImplementation.cs" />
-    <Compile Include="ImplementationChain\IInterface.cs" />
+    <Compile Include="ImplementationChain\IImplementationChainInterface.cs" />
     <Compile Include="ImplementationChain\ParentImplementation.cs" />
     <Compile Include="InterfaceChain\IChildInterface.cs" />
-    <Compile Include="InterfaceChain\Implementation.cs" />
-    <Compile Include="InterfaceChain\ParentInterface.cs" />
+    <Compile Include="InterfaceChain\InterfaceChainImplementation.cs" />
+    <Compile Include="InterfaceChain\IParentInterface.cs" />
     <Compile Include="InterfaceImplementation\IInterface.cs" />
     <Compile Include="InterfaceImplementation\Implementation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

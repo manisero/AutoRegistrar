@@ -1,6 +1,6 @@
 ﻿namespace Shared.ImplementationChain
 {
-	public class ParentImplementation : IInterface
+	public class ParentImplementation : IImplementationChainInterface
 	{
 	}
 }
