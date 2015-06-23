@@ -7,36 +7,28 @@ namespace Manisero.AutoRegistrar.Queries._Impl
 {
 	public class AvailableTypesQuery : IAvailableTypesQuery
 	{
-		public IEnumerable<Type> Execute()
+		public IEnumerable<Type> Execute(AvailableTypesQueryParameter parameter)
 		{
-			var knownAssemblies = new HashSet<Assembly>();
-			var entryAssembly = Assembly.GetCallingAssembly();
+			var availableAssemblies = new HashSet<Assembly>();
+			IncludeAssembly(parameter.RootAssembly, parameter.ReferencedAssemblyFilter, availableAssemblies);
 
-			IncludeAssembly(entryAssembly, knownAssemblies);
-
-			return knownAssemblies.SelectMany(x => x.ExportedTypes)
-								  .ToList();
+			return availableAssemblies.SelectMany(x => x.ExportedTypes)
+									  .ToList();
 		}
 
-		private void IncludeAssembly(Assembly assembly, HashSet<Assembly> knownAssemblies)
+		private void IncludeAssembly(Assembly assembly, Func<AssemblyName, bool> referencedAssemblyFilter, HashSet<Assembly> availableAssemblies)
 		{
-			if (knownAssemblies.Contains(assembly))
+			if (availableAssemblies.Contains(assembly))
 			{
 				return;
 			}
 
-			knownAssemblies.Add(assembly);
+			availableAssemblies.Add(assembly);
 
-			foreach (var referencedAssemblyName in assembly.GetReferencedAssemblies())
+			foreach (var referencedAssemblyName in assembly.GetReferencedAssemblies().Where(referencedAssemblyFilter))
 			{
-				try
-				{
-					var referencedAssembly = Assembly.ReflectionOnlyLoad(referencedAssemblyName.FullName);
-					IncludeAssembly(referencedAssembly, knownAssemblies);
-				}
-				catch (Exception)
-				{
-				}
+				var referencedAssembly = Assembly.Load(referencedAssemblyName);
+				IncludeAssembly(referencedAssembly, referencedAssemblyFilter, availableAssemblies);
 			}
 		}
 	}

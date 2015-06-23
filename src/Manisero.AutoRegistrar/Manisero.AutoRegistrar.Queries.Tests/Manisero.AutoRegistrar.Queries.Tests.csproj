@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoadedTypesQueryTests.cs" />
+    <Compile Include="AvailableTypesQueryTests.cs" />
     <Compile Include="Stubs\IsIntLifetimeShorterThanQuery.cs" />
     <Compile Include="Stubs\LongestIntLifetimeQuery.cs" />
     <Compile Include="TypeDependenciesQueryTests.cs" />

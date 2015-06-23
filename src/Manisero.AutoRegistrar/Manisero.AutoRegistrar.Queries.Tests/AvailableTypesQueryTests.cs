@@ -10,13 +10,20 @@ namespace Manisero.AutoRegistrar.Queries.Tests
 		public void returns_some_known_types()
 		{
 			// Arrange
+			var queryParameter = new AvailableTypesQueryParameter
+				{
+					RootAssembly = GetType().Assembly,
+					ReferencedAssemblyFilter = x => x.Name.StartsWith("Manisero.AutoRegistrar")
+				};
+
 			var query = new AvailableTypesQuery();
 
 			// Act
-			var result = query.Execute();
+			var result = query.Execute(queryParameter);
 
 			// Assert
 			result.Should().Contain(typeof(AvailableTypesQueryTests));
+			result.Should().Contain(typeof(AvailableTypesQuery));
 		}
 	}
 }
