@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICommand.cs" />
-    <Compile Include="IIncludeTypeInLifeTimeMapCommand.cs" />
+    <Compile Include="IIncludeTypeInLifetimeMapCommand.cs" />
     <Compile Include="ILoadAndRetrieveAvailableTypesCommand.cs" />
     <Compile Include="IReturningCommand.cs" />
     <Compile Include="_Impl\LoadAndRetrieveAvailableTypesCommand.cs" />
