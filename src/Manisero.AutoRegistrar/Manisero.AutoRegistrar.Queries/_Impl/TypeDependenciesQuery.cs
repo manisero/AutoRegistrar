@@ -17,7 +17,7 @@ namespace Manisero.AutoRegistrar.Queries._Impl
 			if (parameterLists.Count > 1 &&
 				parameterLists[0].Length == parameterLists[1].Length)
 			{
-				throw new InvalidOperationException("Unable to determine main constructor for type {0}".FormatWith(parameter));
+				throw new InvalidOperationException("Unable to determine main constructor for {0} type.".FormatWith(parameter));
 			}
 
 			return parameterLists.First()

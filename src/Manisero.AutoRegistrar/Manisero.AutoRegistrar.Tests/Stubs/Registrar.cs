@@ -11,21 +11,34 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 	{
 		public void Register()
 		{
-			// 1. Get available types
+			// Get available types
 			var loadAndRetrieveAvailableTypesCommand = new LoadAndRetrieveAvailableTypesCommand();
-			loadAndRetrieveAvailableTypesCommand.Execute(new LoadAndRetrieveAvailableTypesCommandParameter
+			var availableTypes = loadAndRetrieveAvailableTypesCommand.Execute(new LoadAndRetrieveAvailableTypesCommandParameter
 				{
 					RootAssembly = GetType().Assembly,
 					ReferencedAssemblyFilter = x => x.FullName.StartsWith("Manisero.AutoRegistrar")
 				});
 
-			// 2. Build type map
+			// Get initial type map
 			var typeMap = new Dictionary<Type, Type>();
 
-			// 3. Get initial lifetime map
+			// Build type map
+			var includeTypeInTypeMapCommand = new IncludeTypeInTypeMapCommand();
+
+			foreach (var availableType in availableTypes)
+			{
+				includeTypeInTypeMapCommand.Execute(new IncludeTypeInTypeMapCommandParameter
+					{
+						TypeMap = typeMap,
+						Type = availableType,
+						AvailableTypes = availableTypes
+					});
+			}
+
+			// Get initial lifetime map
 			var lifetimeMap = new Dictionary<Type, int>();
 
-			// 4. Include concrete types from type map in lifetime map
+			// Include concrete types from type map in lifetime map
 			var includeTypeInLifetimeMapCommand = new IncludeTypeInLifetimeMapCommand<int>(new TypeDependenciesQuery(),
 																						   new LongestIntLifetimeQuery(),
 																						   new IsIntLifetimeShorterThanQuery());
@@ -35,13 +48,14 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 				includeTypeInLifetimeMapCommand.Execute(new IncludeTypeInLifetimeMapCommandParameter<int>
 					{
 						LifetimeMap = lifetimeMap,
-						Type = destinationType
+						Type = destinationType,
+						TypeMap = typeMap
 					});
 			}
 
-			// 5. Create registration map/list
+			// Create registration map/list
 
-			// 6. Register
+			// Register
 		}
 	}
 }

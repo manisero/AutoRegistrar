@@ -11,7 +11,7 @@ namespace Manisero.AutoRegistrar.Commands
 		public Func<AssemblyName, bool> ReferencedAssemblyFilter { get; set; }
 	}
 
-	public interface ILoadAndRetrieveAvailableTypesCommand : IReturningCommand<LoadAndRetrieveAvailableTypesCommandParameter, IEnumerable<Type>>
+	public interface ILoadAndRetrieveAvailableTypesCommand : IReturningCommand<LoadAndRetrieveAvailableTypesCommandParameter, IList<Type>>
 	{
 	}
 }

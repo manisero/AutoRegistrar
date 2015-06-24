@@ -7,7 +7,7 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 {
 	public class LoadAndRetrieveAvailableTypesCommand : ILoadAndRetrieveAvailableTypesCommand
 	{
-		public IEnumerable<Type> Execute(LoadAndRetrieveAvailableTypesCommandParameter parameter)
+		public IList<Type> Execute(LoadAndRetrieveAvailableTypesCommandParameter parameter)
 		{
 			var availableAssemblies = new HashSet<Assembly>();
 			IncludeAssembly(parameter.RootAssembly, parameter.ReferencedAssemblyFilter, availableAssemblies);

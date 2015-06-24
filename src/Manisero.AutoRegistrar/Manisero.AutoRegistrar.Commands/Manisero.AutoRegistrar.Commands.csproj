@@ -41,8 +41,10 @@
   <ItemGroup>
     <Compile Include="ICommand.cs" />
     <Compile Include="IIncludeTypeInLifetimeMapCommand.cs" />
+    <Compile Include="IIncludeTypeInTypeMapCommand.cs" />
     <Compile Include="ILoadAndRetrieveAvailableTypesCommand.cs" />
     <Compile Include="IReturningCommand.cs" />
+    <Compile Include="_Impl\IncludeTypeInTypeMapCommand.cs" />
     <Compile Include="_Impl\LoadAndRetrieveAvailableTypesCommand.cs" />
     <Compile Include="_Impl\IncludeTypeInLifetimeMapCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

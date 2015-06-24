@@ -25,7 +25,7 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 		{
 			if (parameter.LifetimeMap.ContainsKey(parameter.Type))
 			{
-				throw new InvalidOperationException("Lifetime Map already contains {0} type".FormatWith(parameter.Type));
+				throw new InvalidOperationException("Lifetime Map already contains {0} type.".FormatWith(parameter.Type));
 			}
 
 			var lifetime = _longestLifetimeQuery.Execute();
@@ -82,7 +82,7 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 				}
 				else
 				{
-					throw new InvalidOperationException("Unknown type: {0}".FormatWith(dependency));
+					throw new InvalidOperationException("Unable to determine lifetime of {0} type. The type's implementation is not known.".FormatWith(dependency));
 				}
 			}
 
