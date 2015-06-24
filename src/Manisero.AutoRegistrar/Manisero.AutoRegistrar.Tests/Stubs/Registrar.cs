@@ -45,12 +45,15 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 
 			foreach (var destinationType in typeMap.Values)
 			{
-				includeTypeInLifetimeMapCommand.Execute(new IncludeTypeInLifetimeMapCommandParameter<int>
-					{
-						LifetimeMap = lifetimeMap,
-						Type = destinationType,
-						TypeMap = typeMap
-					});
+				if (!lifetimeMap.ContainsKey(destinationType))
+				{
+					includeTypeInLifetimeMapCommand.Execute(new IncludeTypeInLifetimeMapCommandParameter<int>
+						{
+							LifetimeMap = lifetimeMap,
+							Type = destinationType,
+							TypeMap = typeMap
+						});
+				}
 			}
 
 			// Create registration map/list

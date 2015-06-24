@@ -6,7 +6,12 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 		{
 			if (!parameter.Type.IsAbstract)
 			{
-				parameter.TypeMap.Add(parameter.Type, parameter.Type);
+				var interfaces = parameter.Type.GetInterfaces();
+
+				foreach (var @interface in interfaces)
+				{
+					parameter.TypeMap.Add(@interface, parameter.Type);
+				}
 			}
 		}
 	}
