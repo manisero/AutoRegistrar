@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Manisero.AutoRegistrar.Commands._Impl;
 using Manisero.AutoRegistrar.Queries.Tests.Stubs;
 using Manisero.AutoRegistrar.Queries._Impl;
-using Manisero.AutoRegistrar.Tests.Core.TestsHelpers;
+using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.ConstructorHelpers;
+using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.DependencyHelpers;
 using NUnit.Framework;
 using FluentAssertions;
 
@@ -21,7 +22,7 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 			_longestLifetime = _longestIntLifetimeQuery.Execute();
 		}
 
-		private void Execute(Dictionary<Type, int> lifetimeMap, Type type)
+		private void Execute(Dictionary<Type, int> lifetimeMap, Type type, IDictionary<Type, Type> typeMap = null)
 		{
 			// Arrange
 			var command = new IncludeTypeInLifetimeMapCommand<int>(_typeDependenciesQuery,
@@ -32,7 +33,8 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 			command.Execute(new IncludeTypeInLifetimeMapCommandParameter<int>
 				{
 					LifetimeMap = lifetimeMap,
-					Type = type
+					Type = type,
+					TypeMap = typeMap
 				});
 		}
 
@@ -100,16 +102,41 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 		}
 
 		[Test]
-		public void single_dependency_not_present_in_map___include_it_and_copy_its_lifetime()
+		public void single_implementation_dependency_not_present_in_map_but_present_in_type_map___include_it_and_copy_its_lifetime()
 		{
 			// Arrange & Act
 			var lifetimeMap = new Dictionary<Type, int>();
-			Execute(lifetimeMap, typeof(SingleConstructor_DefaultConstructor));
+			var typeMap = new Dictionary<Type, Type> { { typeof(IInterface), typeof(Implementation) } };
+			Execute(lifetimeMap, typeof(ImplementationDependant), typeMap);
 
 			// Assert
 			lifetimeMap.Should().HaveCount(2);
-			lifetimeMap.Should().Contain(typeof(DefaultConstructor), _longestLifetime);
-			lifetimeMap.Should().Contain(typeof(SingleConstructor_DefaultConstructor), _longestLifetime);
+			lifetimeMap.Should().Contain(typeof(Implementation), _longestLifetime);
+			lifetimeMap.Should().Contain(typeof(ImplementationDependant), _longestLifetime);
+		}
+
+		[Test]
+		public void single_interface_dependency_not_present_in_map_but_present_in_type_map___include_implementation_and_copy_its_lifetime()
+		{
+			// Arrange & Act
+			var lifetimeMap = new Dictionary<Type, int>();
+			var typeMap = new Dictionary<Type, Type> { { typeof(IInterface), typeof(Implementation) } };
+			Execute(lifetimeMap, typeof(InterfaceDependant), typeMap);
+
+			// Assert
+			lifetimeMap.Should().HaveCount(2);
+			lifetimeMap.Should().Contain(typeof(Implementation), _longestLifetime);
+			lifetimeMap.Should().Contain(typeof(ImplementationDependant), _longestLifetime);
+		}
+
+		[Test]
+		public void single_implementation_dependency_not_present_in_map_nor_type_map___TODO()
+		{
+			// Arrange & Act
+			// TODO
+
+			// Assert
+			// TODO
 		}
 
 		[Test]

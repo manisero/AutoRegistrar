@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using Manisero.AutoRegistrar.Queries._Impl;
 using Manisero.AutoRegistrar.Tests.Core.TestsHelpers;
+using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.ConstructorHelpers;
 using NUnit.Framework;
 
 namespace Manisero.AutoRegistrar.Queries.Tests

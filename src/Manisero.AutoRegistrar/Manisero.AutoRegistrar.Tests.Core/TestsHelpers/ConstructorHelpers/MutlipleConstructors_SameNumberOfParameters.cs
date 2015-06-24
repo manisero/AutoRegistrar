@@ -1,4 +1,4 @@
-namespace Manisero.AutoRegistrar.Tests.Core.TestsHelpers
+namespace Manisero.AutoRegistrar.Tests.Core.TestsHelpers.ConstructorHelpers
 {
 	public class MutlipleConstructors_SameNumberOfParameters
 	{
