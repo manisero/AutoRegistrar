@@ -39,7 +39,7 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 					});
 			}
 
-			// 5. Create registration map
+			// 5. Create registration map/list
 
 			// 6. Register
 		}

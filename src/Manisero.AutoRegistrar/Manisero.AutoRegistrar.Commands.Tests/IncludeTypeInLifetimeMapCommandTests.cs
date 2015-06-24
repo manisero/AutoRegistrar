@@ -37,18 +37,19 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 		}
 
 		[Test]
-		public void type_already_in_map___InvalidOperationException()
+		public void type_already_in_map___do_nothing()
 		{
 			// Arrange & Act
 			var lifetimeMap = new Dictionary<Type, int>
 				{
-					{ typeof(DefaultConstructor), 0 }
+					{ typeof(DefaultConstructor), 3 }
 				};
 
-			Action act = () => Execute(lifetimeMap, typeof(DefaultConstructor));
+			Execute(lifetimeMap, typeof(DefaultConstructor));
 
 			// Assert
-			act.ShouldThrow<InvalidOperationException>();
+			lifetimeMap.Should().HaveCount(1);
+			lifetimeMap.Should().Contain(typeof(DefaultConstructor), 3);
 		}
 
 		[Test]

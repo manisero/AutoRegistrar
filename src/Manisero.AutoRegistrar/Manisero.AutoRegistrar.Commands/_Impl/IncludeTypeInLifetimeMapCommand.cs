@@ -1,5 +1,3 @@
-using System;
-using Manisero.AutoRegistrar.Core.Extensions;
 using Manisero.AutoRegistrar.Queries;
 using System.Linq;
 
@@ -24,7 +22,7 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 		{
 			if (parameter.LifetimeMap.ContainsKey(parameter.Type))
 			{
-				throw new InvalidOperationException("Lifetime Map already contains {0} type".FormatWith(parameter.Type));
+				return;
 			}
 
 			var lifetime = _longestLifetimeQuery.Execute();
