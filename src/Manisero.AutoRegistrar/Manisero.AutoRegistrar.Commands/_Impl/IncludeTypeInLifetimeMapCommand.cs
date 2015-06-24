@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using Manisero.AutoRegistrar.Queries;
 using System.Linq;
+using Manisero.AutoRegistrar.Core.Extensions;
 
 namespace Manisero.AutoRegistrar.Commands._Impl
 {
@@ -32,18 +35,7 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 			{
 				foreach (var dependency in dependencies)
 				{
-					TLifetime dependencyLifetime;
-
-					if (!parameter.LifetimeMap.TryGetValue(dependency, out dependencyLifetime))
-					{
-						Execute(new IncludeTypeInLifetimeMapCommandParameter<TLifetime>
-							{
-								LifetimeMap = parameter.LifetimeMap,
-								Type = dependency
-							});
-
-						dependencyLifetime = parameter.LifetimeMap[dependency];
-					}
+					TLifetime dependencyLifetime = GetDependencyLifetime(parameter.LifetimeMap, dependency, parameter.TypeMap);
 
 					if (_isLifetimeShorterThanQuery.Execute(new IsLifetimeShorterThanQueryParameter<TLifetime>
 						{
@@ -57,6 +49,41 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 			}
 
 			parameter.LifetimeMap[parameter.Type] = lifetime;
+		}
+
+		private TLifetime GetDependencyLifetime(IDictionary<Type, TLifetime> lifetimeMap, Type dependency, IDictionary<Type, Type> typeMap)
+		{
+			if (!lifetimeMap.ContainsKey(dependency))
+			{
+				if (typeMap.Values.Contains(dependency))
+				{
+					Execute(new IncludeTypeInLifetimeMapCommandParameter<TLifetime>
+						{
+							LifetimeMap = lifetimeMap,
+							Type = dependency,
+							TypeMap = typeMap
+						});
+				}
+				else if (typeMap.ContainsKey(dependency))
+				{
+					var dependencyImplementation = typeMap[dependency];
+
+					Execute(new IncludeTypeInLifetimeMapCommandParameter<TLifetime>
+						{
+							LifetimeMap = lifetimeMap,
+							Type = dependencyImplementation,
+							TypeMap = typeMap
+						});
+
+					lifetimeMap[dependency] = lifetimeMap[dependencyImplementation];
+				}
+				else
+				{
+					throw new InvalidOperationException("Unknown type: {0}".FormatWith(dependency));
+				}
+			}
+
+			return lifetimeMap[dependency];
 		}
 	}
 }

@@ -34,7 +34,7 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 				{
 					LifetimeMap = lifetimeMap,
 					Type = type,
-					TypeMap = typeMap
+					TypeMap = typeMap ?? new Dictionary<Type, Type>()
 				});
 		}
 
@@ -124,19 +124,21 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 			Execute(lifetimeMap, typeof(InterfaceDependant), typeMap);
 
 			// Assert
-			lifetimeMap.Should().HaveCount(2);
+			lifetimeMap.Should().HaveCount(3);
 			lifetimeMap.Should().Contain(typeof(Implementation), _longestLifetime);
-			lifetimeMap.Should().Contain(typeof(ImplementationDependant), _longestLifetime);
+			lifetimeMap.Should().Contain(typeof(IInterface), _longestLifetime);
+			lifetimeMap.Should().Contain(typeof(InterfaceDependant), _longestLifetime);
 		}
 
 		[Test]
-		public void single_implementation_dependency_not_present_in_map_nor_type_map___TODO()
+		public void single_dependency_not_present_in_map_nor_type_map___InvalidOperationException()
 		{
 			// Arrange & Act
-			// TODO
+			var lifetimeMap = new Dictionary<Type, int>();
+			Action act = () => Execute(lifetimeMap, typeof(ImplementationDependant));
 
 			// Assert
-			// TODO
+			act.ShouldThrow<InvalidOperationException>();
 		}
 
 		[Test]
