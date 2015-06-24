@@ -142,7 +142,7 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 		}
 
 		[Test]
-		public void tree_partially_present_in_map___include_missig_and_copy_lowest_lifetime()
+		public void tree_partially_present_in_map_with_rest_in_type_map___include_missig_and_copy_lowest_lifetime()
 		{
 			// Arrange & Act
 			var lifetimeMap = new Dictionary<Type, int>
@@ -150,7 +150,13 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 					{ typeof(int), 3 }
 				};
 
-			Execute(lifetimeMap, typeof(SingleConstructor_IntDefaultConstructorSingleConstructorInt));
+			var typeMap = new Dictionary<Type, Type>
+				{
+					{ typeof(DefaultConstructor), typeof(DefaultConstructor) },
+					{ typeof(SingleConstructor_Int), typeof(SingleConstructor_Int) }
+				};
+
+			Execute(lifetimeMap, typeof(SingleConstructor_IntDefaultConstructorSingleConstructorInt), typeMap);
 
 			// Assert
 			lifetimeMap.Should().HaveCount(4);
@@ -158,6 +164,26 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 			lifetimeMap.Should().Contain(typeof(DefaultConstructor), _longestLifetime);
 			lifetimeMap.Should().Contain(typeof(SingleConstructor_Int), 3);
 			lifetimeMap.Should().Contain(typeof(SingleConstructor_IntDefaultConstructorSingleConstructorInt), 3);
+		}
+
+		[Test]
+		public void tree_partially_present_in_map_and_type_map___InvalidOperationException()
+		{
+			// Arrange
+			var lifetimeMap = new Dictionary<Type, int>
+				{
+					{ typeof(int), 3 }
+				};
+
+			var typeMap = new Dictionary<Type, Type>
+				{
+					{ typeof(DefaultConstructor), typeof(DefaultConstructor) }
+				};
+
+			Action act = () => Execute(lifetimeMap, typeof(SingleConstructor_IntDefaultConstructorSingleConstructorInt), typeMap);
+
+			// Assert
+			act.ShouldThrow<InvalidOperationException>();
 		}
 	}
 }

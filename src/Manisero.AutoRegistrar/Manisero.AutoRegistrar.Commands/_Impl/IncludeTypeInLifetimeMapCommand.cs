@@ -68,12 +68,15 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 				{
 					var dependencyImplementation = typeMap[dependency];
 
-					Execute(new IncludeTypeInLifetimeMapCommandParameter<TLifetime>
-						{
-							LifetimeMap = lifetimeMap,
-							Type = dependencyImplementation,
-							TypeMap = typeMap
-						});
+					if (!lifetimeMap.ContainsKey(dependencyImplementation))
+					{
+						Execute(new IncludeTypeInLifetimeMapCommandParameter<TLifetime>
+							{
+								LifetimeMap = lifetimeMap,
+								Type = dependencyImplementation,
+								TypeMap = typeMap
+							});
+					}
 
 					lifetimeMap[dependency] = lifetimeMap[dependencyImplementation];
 				}
