@@ -16,11 +16,11 @@ namespace Manisero.AutoRegistrar.Tests
 			var registrar = new Registrar();
 
 			// Act
-			registrar.Register(GetType().Assembly,
-							   x => x.FullName == typeof(GlobalState).Assembly.FullName,
+			registrar.Register(typeof(GlobalState).Assembly,
+							   x => false,
 							   x => x.Namespace != null && x.Namespace.StartsWith(typeof(GlobalState).Namespace),
 							   new Dictionary<Type, Type>(),
-							   new Dictionary<Type, TestLifetime>());
+							   Configuration.INITIAL_LIFETIME_MAP);
 
 			// Assert
 		}
