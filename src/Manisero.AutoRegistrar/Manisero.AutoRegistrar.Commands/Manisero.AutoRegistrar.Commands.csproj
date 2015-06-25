@@ -39,11 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBuildRegistrationListCommand.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IIncludeTypeInLifetimeMapCommand.cs" />
     <Compile Include="IIncludeTypeInTypeMapCommand.cs" />
     <Compile Include="ILoadAndRetrieveAvailableTypesCommand.cs" />
     <Compile Include="IReturningCommand.cs" />
+    <Compile Include="_Impl\BuildRegistrationListCommand.cs" />
     <Compile Include="_Impl\IncludeTypeInTypeMapCommand.cs" />
     <Compile Include="_Impl\LoadAndRetrieveAvailableTypesCommand.cs" />
     <Compile Include="_Impl\IncludeTypeInLifetimeMapCommand.cs" />
