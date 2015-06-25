@@ -9,6 +9,8 @@ namespace Manisero.AutoRegistrar.Commands
 		public Assembly RootAssembly { get; set; }
 
 		public Func<AssemblyName, bool> ReferencedAssemblyFilter { get; set; }
+
+		public Func<Type, bool> TypeFilter { get; set; }
 	}
 
 	public interface ILoadAndRetrieveAvailableTypesCommand : IReturningCommand<LoadAndRetrieveAvailableTypesCommandParameter, IList<Type>>

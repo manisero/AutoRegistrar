@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manisero.AutoRegistrar.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manisero.AutoRegistrar.Tests", "Manisero.AutoRegistrar.Tests\Manisero.AutoRegistrar.Tests.csproj", "{F1C132D7-0E4E-4DC4-AF05-B03E3125D013}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manisero.AutoRegistrar.Tests.ReferencedByTestsCoreOnly", "Manisero.AutoRegistrar.Tests.ReferencedByTestsCoreOnly\Manisero.AutoRegistrar.Tests.ReferencedByTestsCoreOnly.csproj", "{ED68A780-0719-4A34-B7DE-CF25BCC91C82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{F1C132D7-0E4E-4DC4-AF05-B03E3125D013}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1C132D7-0E4E-4DC4-AF05-B03E3125D013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1C132D7-0E4E-4DC4-AF05-B03E3125D013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED68A780-0719-4A34-B7DE-CF25BCC91C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED68A780-0719-4A34-B7DE-CF25BCC91C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED68A780-0719-4A34-B7DE-CF25BCC91C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED68A780-0719-4A34-B7DE-CF25BCC91C82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,5 +82,6 @@ Global
 		{F97B4444-48D2-4C63-A999-1903E5405CDD} = {8E70BBE3-3F20-4BC3-8962-DF1EA22A042F}
 		{A90C5768-053B-429F-AAD3-60224890DDA0} = {562669DD-9E63-42E8-BC92-2EC132508B2B}
 		{8910C4D0-6093-4157-90D6-FD5E84E37C55} = {562669DD-9E63-42E8-BC92-2EC132508B2B}
+		{ED68A780-0719-4A34-B7DE-CF25BCC91C82} = {562669DD-9E63-42E8-BC92-2EC132508B2B}
 	EndGlobalSection
 EndGlobal

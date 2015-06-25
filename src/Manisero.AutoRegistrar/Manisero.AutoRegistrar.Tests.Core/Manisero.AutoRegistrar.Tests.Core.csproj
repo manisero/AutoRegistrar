@@ -54,6 +54,7 @@
     <Compile Include="TestsHelpers\DependencyHelpers\Implementation.cs" />
     <Compile Include="TestsHelpers\DependencyHelpers\ImplementationDependant.cs" />
     <Compile Include="TestsHelpers\DependencyHelpers\InterfaceDependant.cs" />
+    <Compile Include="TestsHelpers\ExplicitReferenceTo_ReferencedByTestsCoreOnly_Library.cs" />
     <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\IDataCommand.cs" />
     <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\IGlobalStateCommand.cs" />
     <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\IRandomDataCommand.cs" />
@@ -73,6 +74,12 @@
     <Compile Include="TestsHelpers\Scenario\CodeBase\Queries\_Impl\RandomQuery.cs" />
     <Compile Include="TestsHelpers\Scenario\Configuration.cs" />
     <Compile Include="TestsHelpers\Scenario\TestLifetime.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Manisero.AutoRegistrar.Tests.ReferencedByTestsCoreOnly\Manisero.AutoRegistrar.Tests.ReferencedByTestsCoreOnly.csproj">
+      <Project>{ed68a780-0719-4a34-b7de-cf25bcc91c82}</Project>
+      <Name>Manisero.AutoRegistrar.Tests.ReferencedByTestsCoreOnly</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

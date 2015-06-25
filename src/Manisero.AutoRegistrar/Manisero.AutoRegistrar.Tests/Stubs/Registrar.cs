@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Manisero.AutoRegistrar.Commands;
 using Manisero.AutoRegistrar.Commands._Impl;
-using Manisero.AutoRegistrar.Queries.Tests.Stubs;
-using Manisero.AutoRegistrar.Queries.Tests.Stubs.IntLifetme;
+using Manisero.AutoRegistrar.Queries.Tests.Stubs.TestLifetimeLifetime;
 using Manisero.AutoRegistrar.Queries._Impl;
+using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario;
 
 namespace Manisero.AutoRegistrar.Tests.Stubs
 {
@@ -17,7 +17,7 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 			var availableTypes = loadAndRetrieveAvailableTypesCommand.Execute(new LoadAndRetrieveAvailableTypesCommandParameter
 				{
 					RootAssembly = GetType().Assembly,
-					ReferencedAssemblyFilter = x => x.FullName.StartsWith("Manisero.AutoRegistrar")
+					ReferencedAssemblyFilter = x => x.FullName == typeof(TestLifetime).Assembly.FullName
 				});
 
 			// Get initial type map
@@ -37,18 +37,18 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 			}
 
 			// Get initial lifetime map
-			var lifetimeMap = new Dictionary<Type, int>();
+			var lifetimeMap = new Dictionary<Type, TestLifetime>();
 
 			// Include concrete types from type map in lifetime map
-			var includeTypeInLifetimeMapCommand = new IncludeTypeInLifetimeMapCommand<int>(new TypeDependenciesQuery(),
-																						   new LongestIntLifetimeQuery(),
-																						   new IsIntLifetimeShorterThanQuery());
+			var includeTypeInLifetimeMapCommand = new IncludeTypeInLifetimeMapCommand<TestLifetime>(new TypeDependenciesQuery(),
+																									new LongestTestLifetimeQuery(),
+																									new IsTestLifetimeShorterThanQuery());
 
 			foreach (var destinationType in typeMap.Values)
 			{
 				if (!lifetimeMap.ContainsKey(destinationType))
 				{
-					includeTypeInLifetimeMapCommand.Execute(new IncludeTypeInLifetimeMapCommandParameter<int>
+					includeTypeInLifetimeMapCommand.Execute(new IncludeTypeInLifetimeMapCommandParameter<TestLifetime>
 						{
 							LifetimeMap = lifetimeMap,
 							Type = destinationType,

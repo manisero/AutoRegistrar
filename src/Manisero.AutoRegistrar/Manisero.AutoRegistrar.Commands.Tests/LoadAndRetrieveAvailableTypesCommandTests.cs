@@ -1,5 +1,8 @@
 ﻿using FluentAssertions;
 using Manisero.AutoRegistrar.Commands._Impl;
+using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario;
+using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario.CodeBase;
+using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario.CodeBase.Commands._Impl;
 using NUnit.Framework;
 
 namespace Manisero.AutoRegistrar.Commands.Tests
@@ -13,7 +16,8 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 			var parameter = new LoadAndRetrieveAvailableTypesCommandParameter
 				{
 					RootAssembly = GetType().Assembly,
-					ReferencedAssemblyFilter = x => x.Name.StartsWith("Manisero.AutoRegistrar")
+					ReferencedAssemblyFilter = x => x.Name.StartsWith("Manisero.AutoRegistrar"),
+					TypeFilter = x => (x.Namespace == null || x.Namespace != typeof(TestLifetime).Namespace) && x.Name != "Class2"
 				};
 
 			var command = new LoadAndRetrieveAvailableTypesCommand();
@@ -24,8 +28,14 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 			// Assert
 			result.Should().Contain(typeof(LoadAndRetrieveAvailableTypesCommandTests));
 			result.Should().Contain(typeof(LoadAndRetrieveAvailableTypesCommand));
-			result.Should().Contain(x => x.Assembly.FullName.StartsWith("Manisero.AutoRegistrar.Core") &&
-										 x.Name == "StringExtensions");
+			result.Should().Contain(x => x.Assembly.FullName.StartsWith("Manisero.AutoRegistrar.Tests.ReferencedByTestsCoreOnly") &&
+										 x.Name == "Class1");
+
+			result.Should().NotContain(typeof(TestLifetime));
+			result.Should().NotContain(typeof(GlobalState));
+			result.Should().NotContain(typeof(GlobalStateCommand));
+			result.Should().NotContain(x => x.Assembly.FullName.StartsWith("Manisero.AutoRegistrar.Tests.ReferencedByTestsCoreOnly") &&
+											x.Name == "Class2");
 		}
 	}
 }
