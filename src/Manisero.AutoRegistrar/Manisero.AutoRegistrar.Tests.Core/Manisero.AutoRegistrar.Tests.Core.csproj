@@ -54,6 +54,25 @@
     <Compile Include="TestsHelpers\DependencyHelpers\Implementation.cs" />
     <Compile Include="TestsHelpers\DependencyHelpers\ImplementationDependant.cs" />
     <Compile Include="TestsHelpers\DependencyHelpers\InterfaceDependant.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\IDataCommand.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\IGlobalStateCommand.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\IRandomDataCommand.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\_Impl\DataCommand.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\_Impl\GlobalStateCommand.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\_Impl\RandomDataCommand.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\GlobalState.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\IDataContext.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Queries\IDataQuery.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Queries\IPureQuery.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\IRandomBehavior.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Queries\IRandomQuery.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\_Impl\DataContext.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Queries\_Impl\DataQuery.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Queries\_Impl\PureQuery.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\_Impl\RandomBehavior.cs" />
+    <Compile Include="TestsHelpers\Scenario\CodeBase\Queries\_Impl\RandomQuery.cs" />
+    <Compile Include="TestsHelpers\Scenario\Configuration.cs" />
+    <Compile Include="TestsHelpers\Scenario\Lifetime.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
