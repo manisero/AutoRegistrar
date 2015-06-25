@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildRegistrationListCommandTests.cs" />
     <Compile Include="LoadAndRetrieveAvailableTypesCommandTests.cs" />
     <Compile Include="IncludeTypeInLifetimeMapCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\Manisero.AutoRegistrar.Commands\Manisero.AutoRegistrar.Commands.csproj">
       <Project>{c7a240b7-a78f-4401-8afc-6addd35932cc}</Project>
       <Name>Manisero.AutoRegistrar.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manisero.AutoRegistrar.Core\Manisero.AutoRegistrar.Core.csproj">
+      <Project>{a90c5768-053b-429f-aad3-60224890dda0}</Project>
+      <Name>Manisero.AutoRegistrar.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manisero.AutoRegistrar.Queries.Tests\Manisero.AutoRegistrar.Queries.Tests.csproj">
       <Project>{8223e104-2b81-4f77-993e-2b264cef25ac}</Project>
