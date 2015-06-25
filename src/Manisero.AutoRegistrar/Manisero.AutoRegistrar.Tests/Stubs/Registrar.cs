@@ -5,6 +5,7 @@ using Manisero.AutoRegistrar.Commands._Impl;
 using Manisero.AutoRegistrar.Queries.Tests.Stubs.TestLifetimeLifetime;
 using Manisero.AutoRegistrar.Queries._Impl;
 using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario;
+using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario.CodeBase;
 
 namespace Manisero.AutoRegistrar.Tests.Stubs
 {
@@ -17,7 +18,8 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 			var availableTypes = loadAndRetrieveAvailableTypesCommand.Execute(new LoadAndRetrieveAvailableTypesCommandParameter
 				{
 					RootAssembly = GetType().Assembly,
-					ReferencedAssemblyFilter = x => x.FullName == typeof(TestLifetime).Assembly.FullName
+					ReferencedAssemblyFilter = x => x.FullName == typeof(GlobalState).Assembly.FullName,
+					TypeFilter = x => x.Namespace != null && x.Namespace.StartsWith(typeof(GlobalState).Namespace)
 				});
 
 			// Get initial type map

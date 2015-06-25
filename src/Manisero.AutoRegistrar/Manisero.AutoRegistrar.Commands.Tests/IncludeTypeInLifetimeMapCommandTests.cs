@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Manisero.AutoRegistrar.Commands._Impl;
-using Manisero.AutoRegistrar.Queries.Tests.Stubs;
 using Manisero.AutoRegistrar.Queries.Tests.Stubs.IntLifetme;
 using Manisero.AutoRegistrar.Queries._Impl;
 using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.ConstructorHelpers;

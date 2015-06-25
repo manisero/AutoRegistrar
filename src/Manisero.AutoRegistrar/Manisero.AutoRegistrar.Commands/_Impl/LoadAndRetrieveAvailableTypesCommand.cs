@@ -12,7 +12,7 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 			var availableAssemblies = new HashSet<Assembly>();
 			IncludeAssembly(parameter.RootAssembly, parameter.ReferencedAssemblyFilter, availableAssemblies);
 
-			return availableAssemblies.SelectMany(x => x.ExportedTypes.Where(parameter.TypeFilter))
+			return availableAssemblies.SelectMany(x => RetrieveTypes(x, parameter.TypeFilter))
 									  .ToList();
 		}
 
@@ -25,11 +25,30 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 
 			availableAssemblies.Add(assembly);
 
-			foreach (var referencedAssemblyName in assembly.GetReferencedAssemblies().Where(referencedAssemblyFilter))
+			var referencedAssemblyNames = (IEnumerable<AssemblyName>)assembly.GetReferencedAssemblies();
+				
+			if (referencedAssemblyFilter != null)
+			{
+				referencedAssemblyNames = referencedAssemblyNames.Where(referencedAssemblyFilter);
+			}
+
+			foreach (var referencedAssemblyName in referencedAssemblyNames)
 			{
 				var referencedAssembly = Assembly.Load(referencedAssemblyName);
 				IncludeAssembly(referencedAssembly, referencedAssemblyFilter, availableAssemblies);
 			}
+		}
+
+		private IEnumerable<Type> RetrieveTypes(Assembly assembly, Func<Type, bool> typeFilter)
+		{
+			var types = assembly.ExportedTypes;
+
+			if (typeFilter != null)
+			{
+				types = types.Where(typeFilter);
+			}
+
+			return types;
 		}
 	}
 }
