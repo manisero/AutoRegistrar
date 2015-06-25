@@ -1,6 +1,6 @@
 ﻿using Manisero.AutoRegistrar.Tests.ReferencedByTestsCoreOnly;
 
-namespace Manisero.AutoRegistrar.Tests.Core.TestsHelpers
+namespace Manisero.AutoRegistrar.Tests.Core
 {
 	public class ExplicitReferenceTo_ReferencedByTestsCoreOnly_Library
 	{

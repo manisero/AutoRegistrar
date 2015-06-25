@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace Manisero.AutoRegistrar.Queries._Impl
 {
@@ -6,7 +7,7 @@ namespace Manisero.AutoRegistrar.Queries._Impl
 	{
 		public bool Execute(Type parameter)
 		{
-			throw new NotImplementedException();
+			return parameter.GetConstructors().Any();
 		}
 	}
 }

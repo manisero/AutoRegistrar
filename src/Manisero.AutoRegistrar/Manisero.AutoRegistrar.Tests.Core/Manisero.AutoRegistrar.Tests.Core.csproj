@@ -40,10 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestsHelpers\ConstructorHelpers\Abstract.cs" />
     <Compile Include="TestsHelpers\ConstructorHelpers\DefaultConstructor.cs" />
     <Compile Include="TestsHelpers\ConstructorHelpers\MutlipleConstructors_Int.cs" />
     <Compile Include="TestsHelpers\ConstructorHelpers\MutlipleConstructors_IntStringBool.cs" />
     <Compile Include="TestsHelpers\ConstructorHelpers\MutlipleConstructors_SameNumberOfParameters.cs" />
+    <Compile Include="TestsHelpers\ConstructorHelpers\PrivateAndPublicConstructor.cs" />
+    <Compile Include="TestsHelpers\ConstructorHelpers\PrivateConstructor.cs" />
     <Compile Include="TestsHelpers\ConstructorHelpers\SingleConstructor_DefaultConstructor.cs" />
     <Compile Include="TestsHelpers\ConstructorHelpers\SingleConstructor_Int.cs" />
     <Compile Include="TestsHelpers\ConstructorHelpers\SingleConstructor_IntDefaultConstructor.cs" />
@@ -54,7 +57,7 @@
     <Compile Include="TestsHelpers\DependencyHelpers\Implementation.cs" />
     <Compile Include="TestsHelpers\DependencyHelpers\ImplementationDependant.cs" />
     <Compile Include="TestsHelpers\DependencyHelpers\InterfaceDependant.cs" />
-    <Compile Include="TestsHelpers\ExplicitReferenceTo_ReferencedByTestsCoreOnly_Library.cs" />
+    <Compile Include="ExplicitReferenceTo_ReferencedByTestsCoreOnly_Library.cs" />
     <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\IDataCommand.cs" />
     <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\IGlobalStateCommand.cs" />
     <Compile Include="TestsHelpers\Scenario\CodeBase\Commands\IRandomDataCommand.cs" />
