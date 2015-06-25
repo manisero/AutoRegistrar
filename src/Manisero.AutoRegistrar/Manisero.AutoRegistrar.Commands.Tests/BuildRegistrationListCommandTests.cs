@@ -16,7 +16,13 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 		public void test_scenario___implementations_and_lifetimes_assigned_properly()
 		{
 			// Arrange
-			var command = new BuildRegistrationListCommand<TestLifetime>(new LoadAndRetrieveAvailableTypesCommand(), new IncludeTypeInTypeMapCommand(), new IncludeTypeInLifetimeMapCommand<TestLifetime>(new TypeDependenciesQuery(), new LongestTestLifetimeQuery(), new IsTypeConstructibleQuery(), new IsTestLifetimeShorterThanQuery()));
+			var command = new BuildRegistrationListCommand<TestLifetime>(new LoadAndRetrieveAvailableTypesCommand(),
+																		 new IncludeTypeInTypeMapCommand(),
+																		 new IncludeTypeInLifetimeMapCommand<TestLifetime>(new TypeDependenciesQuery(),
+																														   new LongestTestLifetimeQuery(),
+																														   new IsTypeConstructibleQuery(),
+																														   new IsTestLifetimeShorterThanQuery()),
+																		 new RegistrationListQuery<TestLifetime>());
 
 			var parameter = new BuildRegistrationListCommandParameter<TestLifetime>
 				{

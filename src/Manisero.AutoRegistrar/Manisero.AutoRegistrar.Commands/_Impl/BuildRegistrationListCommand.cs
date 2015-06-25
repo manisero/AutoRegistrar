@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Manisero.AutoRegistrar.Core;
-using System.Linq;
+using Manisero.AutoRegistrar.Queries;
 
 namespace Manisero.AutoRegistrar.Commands._Impl
 {
@@ -9,14 +9,17 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 		private readonly ILoadAndRetrieveAvailableTypesCommand _loadAndRetrieveAvailableTypesCommand;
 		private readonly IIncludeTypeInTypeMapCommand _includeTypeInTypeMapCommand;
 		private readonly IIncludeTypeInLifetimeMapCommand<TLifetime> _includeTypeInLifetimeMapCommand;
+		private readonly IRegistrationListQuery<TLifetime> _registrationListQuery;
 
 		public BuildRegistrationListCommand(ILoadAndRetrieveAvailableTypesCommand loadAndRetrieveAvailableTypesCommand,
 											IIncludeTypeInTypeMapCommand includeTypeInTypeMapCommand,
-											IIncludeTypeInLifetimeMapCommand<TLifetime> includeTypeInLifetimeMapCommand)
+											IIncludeTypeInLifetimeMapCommand<TLifetime> includeTypeInLifetimeMapCommand,
+											IRegistrationListQuery<TLifetime> registrationListQuery)
 		{
 			_loadAndRetrieveAvailableTypesCommand = loadAndRetrieveAvailableTypesCommand;
 			_includeTypeInTypeMapCommand = includeTypeInTypeMapCommand;
 			_includeTypeInLifetimeMapCommand = includeTypeInLifetimeMapCommand;
+			_registrationListQuery = registrationListQuery;
 		}
 
 		public IList<Registration<TLifetime>> Execute(BuildRegistrationListCommandParameter<TLifetime> parameter)
@@ -51,13 +54,11 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 				}
 			}
 
-			return parameter.TypeMap.Select(x => new Registration<TLifetime>
+			return _registrationListQuery.Execute(new RegistrationListQueryParameter<TLifetime>
 				{
-					SourceType = x.Key,
-					DestinationType = x.Value,
-					Lifetime = parameter.LifetimeMap[x.Value]
-				})
-							.ToList();
+					TypeMap = parameter.TypeMap,
+					LifetimeMap = parameter.LifetimeMap
+				});
 		}
 	}
 }
