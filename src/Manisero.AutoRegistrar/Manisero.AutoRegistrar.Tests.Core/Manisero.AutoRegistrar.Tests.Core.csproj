@@ -72,7 +72,7 @@
     <Compile Include="TestsHelpers\Scenario\CodeBase\_Impl\RandomBehavior.cs" />
     <Compile Include="TestsHelpers\Scenario\CodeBase\Queries\_Impl\RandomQuery.cs" />
     <Compile Include="TestsHelpers\Scenario\Configuration.cs" />
-    <Compile Include="TestsHelpers\Scenario\Lifetime.cs" />
+    <Compile Include="TestsHelpers\Scenario\TestLifetime.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

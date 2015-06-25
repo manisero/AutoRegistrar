@@ -7,11 +7,11 @@ namespace Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario
 {
 	public static class Configuration
 	{
-		public static readonly IDictionary<Type, Lifetime> INITIAL_LIFETIME_MAP = new Dictionary<Type, Lifetime>
+		public static readonly IDictionary<Type, TestLifetime> INITIAL_LIFETIME_MAP = new Dictionary<Type, TestLifetime>
 			{
-				{ typeof(GlobalState), Lifetime.Sigleton },
-				{ typeof(DataContext), Lifetime.Request },
-				{ typeof(RandomBehavior), Lifetime.Transient }
+				{ typeof(GlobalState), TestLifetime.Sigleton },
+				{ typeof(DataContext), TestLifetime.Request },
+				{ typeof(RandomBehavior), TestLifetime.Transient }
 			};
 	}
 }

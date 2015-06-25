@@ -1,6 +1,6 @@
 ﻿namespace Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario
 {
-	public enum Lifetime
+	public enum TestLifetime
 	{
 		Transient,
 		Request,

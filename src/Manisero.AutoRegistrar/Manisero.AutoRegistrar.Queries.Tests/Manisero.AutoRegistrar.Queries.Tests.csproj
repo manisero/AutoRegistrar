@@ -55,8 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Stubs\IsIntLifetimeShorterThanQuery.cs" />
-    <Compile Include="Stubs\LongestIntLifetimeQuery.cs" />
+    <Compile Include="Stubs\IntLifetme\IsIntLifetimeShorterThanQuery.cs" />
+    <Compile Include="Stubs\IntLifetme\LongestIntLifetimeQuery.cs" />
+    <Compile Include="Stubs\TestLifetimeLifetime\IsTestLifetimeShorterThanQuery.cs" />
+    <Compile Include="Stubs\TestLifetimeLifetime\LongestTestLifetimeQuery.cs" />
     <Compile Include="TypeDependenciesQueryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

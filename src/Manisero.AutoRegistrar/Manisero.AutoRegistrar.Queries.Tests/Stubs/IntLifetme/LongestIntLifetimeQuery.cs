@@ -1,4 +1,4 @@
-namespace Manisero.AutoRegistrar.Queries.Tests.Stubs
+namespace Manisero.AutoRegistrar.Queries.Tests.Stubs.IntLifetme
 {
 	public class LongestIntLifetimeQuery : ILongestLifetimeQuery<int>
 	{
