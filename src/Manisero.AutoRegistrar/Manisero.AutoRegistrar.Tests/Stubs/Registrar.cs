@@ -12,7 +12,7 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 {
 	public class Registrar
 	{
-		public class Registrarion<TLifetime>
+		public class Registration<TLifetime>
 		{
 			public Type SourceType { get; set; }
 
@@ -69,7 +69,7 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 			}
 
 			// Create registration map/list
-			var registrarions = typeMap.Select(x => new Registrarion<TestLifetime>
+			var registrarions = typeMap.Select(x => new Registration<TestLifetime>
 				{
 					SourceType = x.Key,
 					DestinationType = x.Value,
