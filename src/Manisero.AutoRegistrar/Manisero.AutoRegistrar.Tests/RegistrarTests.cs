@@ -4,6 +4,7 @@ using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario;
 using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario.CodeBase;
 using Manisero.AutoRegistrar.Tests.Stubs;
 using NUnit.Framework;
+using System.Linq;
 
 namespace Manisero.AutoRegistrar.Tests
 {
@@ -20,7 +21,7 @@ namespace Manisero.AutoRegistrar.Tests
 							   x => false,
 							   x => x.Namespace != null && x.Namespace.StartsWith(typeof(GlobalState).Namespace),
 							   new Dictionary<Type, Type>(),
-							   Configuration.INITIAL_LIFETIME_MAP);
+							   Configuration.INITIAL_LIFETIME_MAP.ToDictionary(x => x.Key, x => x.Value));
 
 			// Assert
 		}

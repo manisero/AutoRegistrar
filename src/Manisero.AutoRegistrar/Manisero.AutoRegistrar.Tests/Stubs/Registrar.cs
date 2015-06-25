@@ -6,11 +6,21 @@ using Manisero.AutoRegistrar.Commands._Impl;
 using Manisero.AutoRegistrar.Queries.Tests.Stubs.TestLifetimeLifetime;
 using Manisero.AutoRegistrar.Queries._Impl;
 using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario;
+using System.Linq;
 
 namespace Manisero.AutoRegistrar.Tests.Stubs
 {
 	public class Registrar
 	{
+		public class Registrarion<TLifetime>
+		{
+			public Type SourceType { get; set; }
+
+			public Type DestinationType { get; set; }
+
+			public TLifetime Lifetime { get; set; }
+		}
+
 		public void Register(Assembly rootAssembly,
 							 Func<AssemblyName, bool> referencedAssemblyFilter,
 							 Func<Type, bool> typeFilter,
@@ -59,6 +69,13 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 			}
 
 			// Create registration map/list
+			var registrarions = typeMap.Select(x => new Registrarion<TestLifetime>
+				{
+					SourceType = x.Key,
+					DestinationType = x.Value,
+					Lifetime = lifetimeMap[x.Value]
+				})
+									   .ToList();
 
 			// Register
 		}
