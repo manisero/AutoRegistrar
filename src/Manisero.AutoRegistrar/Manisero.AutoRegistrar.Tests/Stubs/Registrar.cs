@@ -1,60 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Manisero.AutoRegistrar.Commands;
 using Manisero.AutoRegistrar.Commands._Impl;
 using Manisero.AutoRegistrar.Queries.Tests.Stubs.TestLifetimeLifetime;
 using Manisero.AutoRegistrar.Queries._Impl;
 using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario;
-using Manisero.AutoRegistrar.Tests.Core.TestsHelpers.Scenario.CodeBase;
 
 namespace Manisero.AutoRegistrar.Tests.Stubs
 {
 	public class Registrar
 	{
-		public void Register()
+		public void Register(Assembly rootAssembly,
+							 Func<AssemblyName, bool> referencedAssemblyFilter,
+							 Func<Type, bool> typeFilter,
+							 IDictionary<Type, Type> typeMap,
+							 IDictionary<Type, TestLifetime> lifetimeMap)
 		{
 			// Get available types
 			var loadAndRetrieveAvailableTypesCommand = new LoadAndRetrieveAvailableTypesCommand();
 			var availableTypes = loadAndRetrieveAvailableTypesCommand.Execute(new LoadAndRetrieveAvailableTypesCommandParameter
 				{
-					RootAssembly = GetType().Assembly,
-					ReferencedAssemblyFilter = x => x.FullName == typeof(GlobalState).Assembly.FullName,
-					TypeFilter = x => x.Namespace != null && x.Namespace.StartsWith(typeof(GlobalState).Namespace)
+					RootAssembly = rootAssembly,
+					ReferencedAssemblyFilter = referencedAssemblyFilter,
+					TypeFilter = typeFilter
 				});
-
-			// Get initial type map
-			var typeMap = new Dictionary<Type, Type>();
 
 			// Build type map
 			var includeTypeInTypeMapCommand = new IncludeTypeInTypeMapCommand();
 
-			foreach (var availableType in availableTypes)
+			foreach (var type in availableTypes)
 			{
 				includeTypeInTypeMapCommand.Execute(new IncludeTypeInTypeMapCommandParameter
 					{
 						TypeMap = typeMap,
-						Type = availableType,
+						Type = type,
 						AvailableTypes = availableTypes
 					});
 			}
 
-			// Get initial lifetime map
-			var lifetimeMap = new Dictionary<Type, TestLifetime>();
-
-			// Include concrete types from type map in lifetime map
+			// Include implementations from Type Map in Lifetime Map
 			var includeTypeInLifetimeMapCommand = new IncludeTypeInLifetimeMapCommand<TestLifetime>(new TypeDependenciesQuery(),
 																									new LongestTestLifetimeQuery(),
 																									new IsTypeConstructibleQuery(),
 																									new IsTestLifetimeShorterThanQuery());
 
-			foreach (var destinationType in typeMap.Values)
+			foreach (var implementationType in typeMap.Values)
 			{
-				if (!lifetimeMap.ContainsKey(destinationType))
+				if (!lifetimeMap.ContainsKey(implementationType))
 				{
 					includeTypeInLifetimeMapCommand.Execute(new IncludeTypeInLifetimeMapCommandParameter<TestLifetime>
 						{
 							LifetimeMap = lifetimeMap,
-							Type = destinationType,
+							Type = implementationType,
 							TypeMap = typeMap
 						});
 				}
