@@ -80,9 +80,9 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 
 					lifetimeMap[dependency] = lifetimeMap[dependencyImplementation];
 				}
-				else
+				else if (!dependency.IsAbstract)
 				{
-					throw new InvalidOperationException("Unable to determine lifetime of {0} type. The type's implementation is not known.".FormatWith(dependency));
+					throw new InvalidOperationException("Unable to determine lifetime of {0} type.".FormatWith(dependency));
 				}
 			}
 
