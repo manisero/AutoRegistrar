@@ -10,14 +10,17 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 	{
 		private readonly ITypeDependenciesQuery _typeDependenciesQuery;
 		private readonly ILongestLifetimeQuery<TLifetime> _longestLifetimeQuery;
+		private readonly IIsTypeConstructibleQuery _isTypeConstructibleQuery;
 		private readonly IIsLifetimeShorterThanQuery<TLifetime> _isLifetimeShorterThanQuery;
 
 		public IncludeTypeInLifetimeMapCommand(ITypeDependenciesQuery typeDependenciesQuery,
 											   ILongestLifetimeQuery<TLifetime> longestLifetimeQuery,
+											   IIsTypeConstructibleQuery isTypeConstructibleQuery,
 											   IIsLifetimeShorterThanQuery<TLifetime> isLifetimeShorterThanQuery)
 		{
 			_typeDependenciesQuery = typeDependenciesQuery;
 			_longestLifetimeQuery = longestLifetimeQuery;
+			_isTypeConstructibleQuery = isTypeConstructibleQuery;
 			_isLifetimeShorterThanQuery = isLifetimeShorterThanQuery;
 		}
 
@@ -35,7 +38,7 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 			{
 				foreach (var dependency in dependencies)
 				{
-					TLifetime dependencyLifetime = GetDependencyLifetime(parameter.LifetimeMap, dependency, parameter.TypeMap);
+					var dependencyLifetime = GetDependencyLifetime(parameter.LifetimeMap, dependency, parameter.TypeMap);
 
 					if (_isLifetimeShorterThanQuery.Execute(new IsLifetimeShorterThanQueryParameter<TLifetime>
 						{
@@ -80,7 +83,16 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 
 					lifetimeMap[dependency] = lifetimeMap[dependencyImplementation];
 				}
-				else if (!dependency.IsAbstract)
+				else if (_isTypeConstructibleQuery.Execute(dependency))
+				{
+					Execute(new IncludeTypeInLifetimeMapCommandParameter<TLifetime>
+						{
+							LifetimeMap = lifetimeMap,
+							Type = dependency,
+							TypeMap = typeMap
+						});
+				}
+				else
 				{
 					throw new InvalidOperationException("Unable to determine lifetime of {0} type.".FormatWith(dependency));
 				}

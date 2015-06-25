@@ -44,6 +44,7 @@ namespace Manisero.AutoRegistrar.Tests.Stubs
 			// Include concrete types from type map in lifetime map
 			var includeTypeInLifetimeMapCommand = new IncludeTypeInLifetimeMapCommand<TestLifetime>(new TypeDependenciesQuery(),
 																									new LongestTestLifetimeQuery(),
+																									new IsTypeConstructibleQuery(),
 																									new IsTestLifetimeShorterThanQuery());
 
 			foreach (var destinationType in typeMap.Values)
