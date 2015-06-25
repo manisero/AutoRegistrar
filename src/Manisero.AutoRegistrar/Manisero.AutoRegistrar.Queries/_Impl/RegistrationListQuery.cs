@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using Manisero.AutoRegistrar.Core;
 
 namespace Manisero.AutoRegistrar.Queries._Impl
@@ -8,7 +8,14 @@ namespace Manisero.AutoRegistrar.Queries._Impl
 	{
 		public IList<Registration<TLifetime>> Execute(RegistrationListQueryParameter<TLifetime> parameter)
 		{
-			throw new NotImplementedException();
+			return parameter.TypeMap.
+							 Select(x => new Registration<TLifetime>
+								 {
+									 SourceType = x.Key,
+									 DestinationType = x.Value,
+									 Lifetime = parameter.LifetimeMap[x.Value]
+								 })
+							.ToList();
 		}
 	}
 }
