@@ -17,7 +17,7 @@ namespace Manisero.AutoRegistrar.Commands.Tests
 				{
 					RootAssembly = GetType().Assembly,
 					ReferencedAssemblyFilter = x => x.Name.StartsWith("Manisero.AutoRegistrar"),
-					TypeFilter = x => (x.Namespace == null || x.Namespace != typeof(TestLifetime).Namespace) && x.Name != "Class2"
+					TypeFilter = x => (x.Namespace == null || !x.Namespace.StartsWith(typeof(TestLifetime).Namespace)) && x.Name != "Class2"
 				};
 
 			var command = new LoadAndRetrieveAvailableTypesCommand();

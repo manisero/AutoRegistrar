@@ -12,7 +12,7 @@ namespace Manisero.AutoRegistrar.Commands._Impl
 			var availableAssemblies = new HashSet<Assembly>();
 			IncludeAssembly(parameter.RootAssembly, parameter.ReferencedAssemblyFilter, availableAssemblies);
 
-			return availableAssemblies.SelectMany(x => x.ExportedTypes)
+			return availableAssemblies.SelectMany(x => x.ExportedTypes.Where(parameter.TypeFilter))
 									  .ToList();
 		}
 
