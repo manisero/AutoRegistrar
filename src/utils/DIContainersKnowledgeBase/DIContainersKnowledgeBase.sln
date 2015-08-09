@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StructureMap", "StructureMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructureMapKnowledgeBase", "StructureMapKnowledgeBase\StructureMapKnowledgeBase.csproj", "{FE08BD2F-0FAE-46C9-9D20-11BFBBD8EC76}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Autofac", "Autofac", "{BB3D37B7-7423-4F76-A33A-90C654647EFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacKnowledgeBase", "AutofacKnowledgeBase\AutofacKnowledgeBase.csproj", "{1ED97916-407C-4932-8068-D0F30AD4C2EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,10 @@ Global
 		{FE08BD2F-0FAE-46C9-9D20-11BFBBD8EC76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE08BD2F-0FAE-46C9-9D20-11BFBBD8EC76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE08BD2F-0FAE-46C9-9D20-11BFBBD8EC76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ED97916-407C-4932-8068-D0F30AD4C2EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED97916-407C-4932-8068-D0F30AD4C2EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED97916-407C-4932-8068-D0F30AD4C2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED97916-407C-4932-8068-D0F30AD4C2EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,5 +53,6 @@ Global
 		{6882307A-C770-4160-BA06-5DC1F063B68E} = {594E2C6D-BA9D-4CE1-85DA-B41C07019181}
 		{B8318C79-FBC2-4237-8FE9-33F6D760B0F3} = {59C055AF-D692-4B4B-86FD-CDE7FD903E19}
 		{FE08BD2F-0FAE-46C9-9D20-11BFBBD8EC76} = {D5F1316A-7876-45B9-8A40-359C2918708B}
+		{1ED97916-407C-4932-8068-D0F30AD4C2EC} = {BB3D37B7-7423-4F76-A33A-90C654647EFE}
 	EndGlobalSection
 EndGlobal
