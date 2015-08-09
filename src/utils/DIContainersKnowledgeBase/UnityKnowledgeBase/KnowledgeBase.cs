@@ -80,7 +80,6 @@ namespace UnityKnowledgeBase
 			var container = new UnityContainer();
 			container.RegisterType<IParentInterface, IChildInterface>();
 			container.RegisterType<IChildInterface, InterfaceChainImplementation>();
-			container.RegisterType<InterfaceChainImplementation>();
 
 			Action act = () => container.Resolve<IParentInterface>();
 
@@ -95,7 +94,6 @@ namespace UnityKnowledgeBase
 			var container = new UnityContainer();
 			container.RegisterType<IImplementationChainInterface, ParentImplementation>();
 			container.RegisterType<ParentImplementation, ChildImplementation>();
-			container.RegisterType<ChildImplementation>(new ContainerControlledLifetimeManager());
 
 			// Act
 			var instance = container.Resolve<IImplementationChainInterface>();
