@@ -1,6 +1,8 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using NUnit.Framework;
 using Shared.ClassInheritance;
+using Shared.InterfaceChain;
 using Shared.InterfaceImplementation;
 using SimpleInjector;
 
@@ -68,6 +70,24 @@ namespace SimpleInjectorKnowledgeBase
 
             // Assert
             instance2.ShouldBeEquivalentTo(instance1);
+        }
+
+        [Test]
+        public void interface_chaining_is_not_supported()
+        {
+            // Arrange
+            var container = new Container();
+
+            Action act = () =>
+                {
+                    container.Register<IParentInterface, IChildInterface>();
+                    container.Register<IChildInterface, InterfaceChainImplementation>();
+
+                    container.GetInstance<IParentInterface>();
+                };
+
+            // Assert
+            act.ShouldThrow<Exception>();
         }
     }
 }
